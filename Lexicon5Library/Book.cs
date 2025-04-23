@@ -21,7 +21,7 @@ class Book
     public string Author
     {
         get { return author; }
-        set { title = value; }
+        set { author = value; }
     }
     public int Isbn
     {
