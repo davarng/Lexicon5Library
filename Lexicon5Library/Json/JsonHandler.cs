@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Lexicon5Library.Json;
 
-internal class JsonHandler
+internal static class JsonHandler
 {
     private static string jsonFilePath = @"C:\Lexicon kod\LexiconUppgifter\Lexicon5Library\Lexicon5Library\Json\LibraryJSON.json";
 
@@ -37,7 +37,6 @@ internal class JsonHandler
             Console.WriteLine($"Library is empty{Environment.NewLine}");
         }
     }
-
 
     public static void JsonSaveLibrary(List<Book> listOfBooks)
     {

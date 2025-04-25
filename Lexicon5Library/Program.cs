@@ -66,40 +66,7 @@ internal class Program
 
     }
 
-    private static void PrintList(List<Book> listOfBooks)
-    {
-        Console.Clear();
-        foreach (var book in listOfBooks)
-        {
-            Console.WriteLine($"{book}{Environment.NewLine}" +
-                $"---------------------------------");
-
-        }
-        Console.WriteLine();
-    }
-
-    static void SearchForBook()
-    {
-        throw new NotImplementedException();
-    }
-
-    private static void AddBook(List<Book> books)
-    {
-        Console.Clear();
-        Console.Write("TITLE: ");
-        string title = Console.ReadLine();
-        Console.Write($"Author: ");
-        string author = Console.ReadLine();
-        Console.Write($"ISBN: ");
-        bool success = int.TryParse(Console.ReadLine(), out int isbn);
-        Console.Write($"Category: ");
-        string category = Console.ReadLine();
-
-        Book book = new(title, author, isbn, category);
-        Console.WriteLine($"Book {title} created!{Environment.NewLine}");
-        books.Add(book);
-        JsonHandler.JsonSaveLibrary(books);
-    }
+    #region ADMIN OPERATIONS
     static void RemoveBook(List<Book> books)
     {
         PrintList(books);
@@ -125,4 +92,48 @@ internal class Program
         else
             Console.WriteLine("Book doesnt exist.");
     }
+
+    private static void AddBook(List<Book> books)
+    {
+        Console.Clear();
+        Console.Write("TITLE: ");
+        string title = Console.ReadLine();
+        Console.Write($"Author: ");
+        string author = Console.ReadLine();
+        Console.Write($"ISBN: ");
+        bool success = int.TryParse(Console.ReadLine(), out int isbn);
+        Console.Write($"Category: ");
+        string category = Console.ReadLine();
+
+        Book book = new(title, author, isbn, category);
+        Console.WriteLine($"Book {title} created!{Environment.NewLine}");
+        books.Add(book);
+        JsonHandler.JsonSaveLibrary(books);
+    }
+
+
+    #endregion
+
+    #region USER OPERATIONS
+    private static void PrintList(List<Book> listOfBooks)
+    {
+        Console.Clear();
+        foreach (var book in listOfBooks)
+        {
+            Console.WriteLine($"{book}{Environment.NewLine}" +
+                $"---------------------------------");
+
+        }
+        Console.WriteLine();
+    }
+    #endregion
+
+
+    static void SearchForBook()
+    {
+        throw new NotImplementedException();
+    }
+
+
+
 }
