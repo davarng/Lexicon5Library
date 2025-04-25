@@ -9,7 +9,7 @@ namespace Lexicon5Library.Json;
 
 internal static class JsonHandler
 {
-    private static string jsonFilePath = @"C:\Lexicon kod\LexiconUppgifter\Lexicon5Library\Lexicon5Library\Json\LibraryJSON.json";
+    private readonly static string jsonFilePath = @"C:\Lexicon kod\LexiconUppgifter\Lexicon5Library\Lexicon5Library\Json\LibraryJSON.json";
 
     private static bool JsonFileExists()
     {
@@ -26,23 +26,21 @@ internal static class JsonHandler
 
     public static void JsonLoadLibrary(ref List<Book> listOfBooks)
     {
-        if (!JsonFileExists()) return;
-        try
-        {
-            listOfBooks = JsonSerializer.Deserialize<List<Book>>(File.ReadAllText(jsonFilePath));
+        if (!JsonFileExists())
+            return;
+
+        listOfBooks = JsonSerializer.Deserialize<List<Book>>(File.ReadAllText(jsonFilePath)) ?? listOfBooks;
+
+        if (listOfBooks.Count > 0)
             Console.WriteLine("Library loaded.");
-        }
-        catch (JsonException)
-        {
-            Console.WriteLine($"Library is empty{Environment.NewLine}");
-        }
+        else
+            Console.WriteLine("Library is empty.");
     }
 
     public static void JsonSaveLibrary(List<Book> listOfBooks)
     {
         if (!JsonFileExists()) return;
 
-        Console.WriteLine(listOfBooks[0]);
         var options = new JsonSerializerOptions { WriteIndented = true };
         string jsonString = JsonSerializer.Serialize(listOfBooks, options);
         File.WriteAllText(jsonFilePath, jsonString);

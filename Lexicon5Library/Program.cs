@@ -10,8 +10,6 @@ namespace Lexicon5Library;
 
 internal class Program
 {
-
-
     //TODO
     //Admin panel/user panel
     //Add/remove category
@@ -49,7 +47,7 @@ internal class Program
                     RemoveBook(books);
                     break;
                 case "4":
-                    BookSearchSelection(books);
+                    BookSearchHandler.BookSearchSelection(books);
                     break;
                 case "5":
 
@@ -82,8 +80,8 @@ internal class Program
             if (removedBook != null)
             {
                 Console.WriteLine($"Are you sure you want to delete this book: {removedBook.Title}, {removedBook.Author}{Environment.NewLine}" +
-                    $"Type: \"delete\" to delete.");
-                var deleteInput = Console.ReadLine().ToLower();
+                    $"Type: \"delete\" to delete. Otherwise just hit enter.");
+                var deleteInput = Console.ReadLine() ?? "".ToLower();
                 if (deleteInput == "delete")
                 {
                     books.Remove(removedBook);
@@ -100,13 +98,13 @@ internal class Program
     {
         Console.Clear();
         Console.Write("Title: ");
-        string title = Console.ReadLine();
+        string title = Console.ReadLine() ?? "";
         Console.Write($"Author: ");
-        string author = Console.ReadLine();
+        string author = Console.ReadLine() ?? "";
         Console.Write($"ISBN: ");
         _ = int.TryParse(Console.ReadLine(), out int isbn);
         Console.Write($"Category: ");
-        string category = Console.ReadLine();
+        string category = Console.ReadLine() ?? "";
 
         if (books.Any(book => book.Isbn == isbn))
         {
@@ -120,11 +118,10 @@ internal class Program
         JsonHandler.JsonSaveLibrary(books);
     }
 
-
     #endregion
 
     #region USER OPERATIONS
-    private static void PrintList(List<Book> listOfBooks)
+    public static void PrintList(List<Book> listOfBooks)
     {
         Console.Clear();
         foreach (var book in listOfBooks)
@@ -136,104 +133,4 @@ internal class Program
         Console.WriteLine();
     }
     #endregion
-
-
-    static void BookSearchSelection(List<Book> books)
-    {
-        Console.Clear();
-        Console.WriteLine($"What would you like to search by?{Environment.NewLine}" +
-            $"1. Author{Environment.NewLine}" +
-            $"2. Title{Environment.NewLine}" +
-            $"3. Isbn{Environment.NewLine}" +
-            $"4. Category");
-        string input = Console.ReadLine() ?? "";
-
-        switch (input)
-        {
-            case "1":
-                BookSearch(books, ByAuthor);
-
-                break;
-            case "2":
-                BookSearch(books, ByTitle);
-
-                break;
-            case "3":
-                BookSearch(books, ByIsbn);
-
-                break;
-            case "4":
-                BookSearch(books, ByCategory);
-
-                break;
-            default:
-                Console.WriteLine("Invalid search term.");
-
-                break;
-        }
-    }
-
-    private static void BookSearch(List<Book> books, Func<List<Book>, string, List<Book>> searchBy)
-    {
-        Console.Write("Write word to search for: ");
-        string searchWord = Console.ReadLine() ?? "";
-        PrintList(searchBy(books, searchWord));
-    }
-
-    private static void BookSearch(List<Book> books, Func<List<Book>, int, List<Book>> searchBy)
-    {
-        Console.Write("Write word to search for: ");
-        bool success = int.TryParse(Console.ReadLine(),out int searchInt);
-        if(success)
-            PrintList(searchBy(books, searchInt));
-        else
-            Console.WriteLine("Not a valid isbn...");
-    }
-
-    private static List<Book> ByAuthor(List<Book> books, string searchWord)
-    {
-        var searchedBooks = books.Where(book => book.Author.Contains(searchWord)).ToList();
-        return searchedBooks;
-    }
-
-    private static List<Book> ByTitle(List<Book> books, string searchWord)
-    {
-        var searchedBooks = books.Where(book => book.Title.Contains(searchWord)).ToList();
-        return searchedBooks;
-    }
-
-    private static List<Book> ByIsbn(List<Book> books, int searchWord)
-    {
-        var searchedBooks = books.Where(book => book.Isbn == searchWord).ToList();
-        return searchedBooks;
-    }
-
-    private static List<Book> ByCategory(List<Book> books, string searchWord)
-    {
-        var searchedBooks = books.Where(book => book.Category.Contains(searchWord)).ToList();
-        return searchedBooks;
-    }
-
-    //Not using anymore.
-
-    //private static void BookSearchByAuthor(List<Book> books)
-    //{
-    //    Console.Write("Write a search term for author: ");
-    //    string searchAuthor = Console.ReadLine();
-    //    var searchedBooks = books.Where(book => book.Author.Contains(searchAuthor)).ToList();
-
-    //    PrintList(searchedBooks);
-    //}
-
-    //private static void BookSearchByTitle(List<Book> books)
-    //{
-    //    Console.Write("Write a search term for title: ");
-    //    string searchTitle = Console.ReadLine();
-    //    var searchedBooks = books.Where(book => book.Title.Contains(searchTitle)).ToList();
-
-    //    PrintList(searchedBooks);
-    //}
-
-
-
 }
