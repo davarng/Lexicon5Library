@@ -1,4 +1,5 @@
-﻿using System.Text.Json;
+﻿using Lexicon5Library.Json;
+using System.Text.Json;
 using System.Text.Json.Serialization.Metadata;
 using System.Xml;
 
@@ -14,7 +15,7 @@ internal class Program
     static void Main(string[] args)
     {
         List<Book> books = [];
-        JsonLoadLibrary(ref books);
+        JsonHandler.JsonLoadLibrary(ref books);
         string input;
 
         while (true)
@@ -36,8 +37,7 @@ internal class Program
             switch (input)
             {
                 case "1":
-                    books.Add(AddBook());
-                    JsonSaveLibrary(books);
+                    AddBook(books);
                     break;
                 case "2":
                     PrintList(books);
@@ -49,7 +49,7 @@ internal class Program
                     SearchForBook();
                     break;
                 case "5":
-                    JsonSaveLibrary(books);
+
                     break;
                 case "Q":
                 case "q":
@@ -64,45 +64,6 @@ internal class Program
             }
         }
 
-    }
-
-    static bool JsonFileExists(string jsonBooksPath)
-    {
-        if (File.Exists(jsonBooksPath))
-        {
-            return true;
-        }
-        else
-        {
-            Console.WriteLine("File not found...");
-            return false;
-        }
-    }
-
-    static void JsonLoadLibrary(ref List<Book> listOfBooks)
-    {
-        string jsonBooksPath = @"C:\Lexicon kod\LexiconUppgifter\Lexicon5Library\Lexicon5Library\LibraryJSON.json";
-        if (!JsonFileExists(jsonBooksPath)) return;
-        try
-        {
-            listOfBooks = JsonSerializer.Deserialize<List<Book>>(File.ReadAllText(jsonBooksPath));
-            Console.WriteLine("Library loaded.");
-        }
-        catch (JsonException)
-        {
-            Console.WriteLine($"Library is empty{Environment.NewLine}");
-        }
-    }
-    static void JsonSaveLibrary(List<Book> listOfBooks)
-    {
-        string jsonBooksPath = @"C:\Lexicon kod\LexiconUppgifter\Lexicon5Library\Lexicon5Library\LibraryJSON.json";
-        if (!JsonFileExists(jsonBooksPath)) return;
-
-        Console.WriteLine(listOfBooks[0]);
-        var options = new JsonSerializerOptions { WriteIndented = true };
-        string jsonString = JsonSerializer.Serialize(listOfBooks, options);
-        File.WriteAllText(jsonBooksPath, jsonString);
-        Console.WriteLine("Library updated.");
     }
 
     private static void PrintList(List<Book> listOfBooks)
@@ -122,7 +83,7 @@ internal class Program
         throw new NotImplementedException();
     }
 
-    private static Book AddBook()
+    private static void AddBook(List<Book> books)
     {
         Console.Clear();
         Console.Write("TITLE: ");
@@ -136,8 +97,8 @@ internal class Program
 
         Book book = new(title, author, isbn, category);
         Console.WriteLine($"Book {title} created!{Environment.NewLine}");
-
-        return book;
+        books.Add(book);
+        JsonHandler.JsonSaveLibrary(books);
     }
     static void RemoveBook(List<Book> books)
     {
@@ -157,7 +118,7 @@ internal class Program
                 {
                     books.Remove(removedBook);
                     Console.WriteLine($"Book {removedBook.Title} has been removed.");
-                    JsonSaveLibrary(books);
+                    JsonHandler.JsonSaveLibrary(books);
                 }
             }
         }
