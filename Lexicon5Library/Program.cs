@@ -1,9 +1,13 @@
 ﻿using System.Text.Json;
+using System.Text.Json.Serialization.Metadata;
+using System.Xml;
 
 namespace Lexicon5Library;
 
 internal class Program
 {
+
+
     //TODO
     //Admin panel/user panel
     //Add/remove category
@@ -15,17 +19,17 @@ internal class Program
 
         while (true)
         {
-            Console.WriteLine("Write one of the options." +
-                "1. Create book" +
-                "2. List books" +
-                "3. Borrow book" +
-                "4. Remove book" +
-                "5. add category" +
-                "6. remove category" +
-                "7. login" +
-                "8. admin area" +
-                "9. user area" +
-                "Q.");
+            Console.WriteLine($"Write one of the options.{Environment.NewLine}" +
+                $"1. Create book{Environment.NewLine}" +
+                $"2. List books{Environment.NewLine}" +
+                $"3. Remove book{Environment.NewLine}" +
+                $"4. Borrow book{Environment.NewLine}" +
+                $"5. add category{Environment.NewLine}" +
+                $"6. remove category{Environment.NewLine}" +
+                $"7. login{Environment.NewLine}" +
+                $"8. admin area{Environment.NewLine}" +
+                $"9. user area{Environment.NewLine}" +
+                $"Q. Quit application.");
 
             input = Console.ReadLine();
 
@@ -33,6 +37,7 @@ internal class Program
             {
                 case "1":
                     books.Add(AddBook());
+                    JsonSaveLibrary(books);
                     break;
                 case "2":
                     PrintList(books);
@@ -48,10 +53,11 @@ internal class Program
                     break;
                 case "Q":
                 case "q":
-                    Console.WriteLine("Closing application window...");
+                    Console.WriteLine($"{Environment.NewLine}Closing application window...");
 
                     return;
                 default:
+                    Console.Clear();
                     Console.WriteLine("Your input is not valid");
 
                     break;
@@ -77,28 +83,38 @@ internal class Program
     {
         string jsonBooksPath = @"C:\Lexicon kod\LexiconUppgifter\Lexicon5Library\Lexicon5Library\LibraryJSON.json";
         if (!JsonFileExists(jsonBooksPath)) return;
-
-        listOfBooks = JsonSerializer.Deserialize<List<Book>>(File.ReadAllText(jsonBooksPath));
-        Console.WriteLine("loaded books");
+        try
+        {
+            listOfBooks = JsonSerializer.Deserialize<List<Book>>(File.ReadAllText(jsonBooksPath));
+            Console.WriteLine("Library loaded.");
+        }
+        catch (JsonException)
+        {
+            Console.WriteLine($"Library is empty{Environment.NewLine}");
+        }
     }
     static void JsonSaveLibrary(List<Book> listOfBooks)
     {
         string jsonBooksPath = @"C:\Lexicon kod\LexiconUppgifter\Lexicon5Library\Lexicon5Library\LibraryJSON.json";
         if (!JsonFileExists(jsonBooksPath)) return;
 
-        string useless = JsonSerializer.Serialize(listOfBooks);
-        File.WriteAllText(jsonBooksPath, useless);
-        Console.WriteLine("Finished saving to file.");
+        Console.WriteLine(listOfBooks[0]);
+        var options = new JsonSerializerOptions { WriteIndented = true };
+        string jsonString = JsonSerializer.Serialize(listOfBooks, options);
+        File.WriteAllText(jsonBooksPath, jsonString);
+        Console.WriteLine("Library updated.");
     }
 
     private static void PrintList(List<Book> listOfBooks)
     {
+        Console.Clear();
         foreach (var book in listOfBooks)
         {
             Console.WriteLine($"{book}{Environment.NewLine}" +
                 $"---------------------------------");
 
         }
+        Console.WriteLine();
     }
 
     static void SearchForBook()
@@ -108,33 +124,42 @@ internal class Program
 
     private static Book AddBook()
     {
-        Console.WriteLine("TITLE");
+        Console.Clear();
+        Console.Write("TITLE: ");
         string title = Console.ReadLine();
-        Console.WriteLine("AUTHOR");
+        Console.Write($"Author: ");
         string author = Console.ReadLine();
-        Console.WriteLine("ISBN");
+        Console.Write($"ISBN: ");
         bool success = int.TryParse(Console.ReadLine(), out int isbn);
-        Console.WriteLine("CATEGORY");
+        Console.Write($"Category: ");
         string category = Console.ReadLine();
 
-
         Book book = new(title, author, isbn, category);
+        Console.WriteLine($"Book {title} created!{Environment.NewLine}");
 
         return book;
     }
     static void RemoveBook(List<Book> books)
     {
         PrintList(books);
-        Console.WriteLine("Write index of book");
-        bool success = int.TryParse(Console.ReadLine(), out int index);
+        Console.Write("Write ISBN of book: ");
+        bool success = int.TryParse(Console.ReadLine(), out int ISBN);
 
-        if (success && index <= books.Count && books.Count != 0)
+        if (success && books.Count != 0)
         {
-            index -= 1;
-            var removedBook = books[index].Title;
-
-            books.RemoveAt(index);
-            Console.WriteLine($"{removedBook} has been removed.");
+            var removedBook = books.Find(book => book.Isbn == ISBN);
+            if (removedBook != null)
+            {
+                Console.WriteLine($"Are you sure you want to delete this book: {removedBook.Title}, {removedBook.Author}{Environment.NewLine}" +
+                    $"Type: \"delete\" to delete.");
+                var deleteInput = Console.ReadLine().ToLower();
+                if (deleteInput == "delete")
+                {
+                    books.Remove(removedBook);
+                    Console.WriteLine($"Book {removedBook.Title} has been removed.");
+                    JsonSaveLibrary(books);
+                }
+            }
         }
         else
             Console.WriteLine("Book doesnt exist.");
