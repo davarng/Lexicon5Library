@@ -35,10 +35,8 @@ class Book
         set { category = value; }
     }
 
-    public Book(string title, string author, long isbn, BookCategory category, List<Book> books)
+    public Book(string title, string author, long isbn, BookCategory category)
     {
-        ValidateInput(title, author, isbn, category, books);
-
         this.title = title;
         this.author = author;
         this.isbn = isbn;
@@ -59,7 +57,7 @@ class Book
             errorMessage += $"The author is not valid(2-100 characters). " +
                 $"Your author length: {author.Length} characters.{Environment.NewLine}";
 
-        if (isbnLength < 10 || isbnLength > 13 || duplicateIsbn == null)
+        if (isbnLength < 10 || isbnLength > 13 || duplicateIsbn != null)
             errorMessage += $"The ISBN is not valid(10-13 numbers and unique). {(duplicateIsbn == null ?
                 $"Your ISBN length: {isbnLength}" :
                 $"ISBN already exists: {duplicateIsbn.Title}: {duplicateIsbn.Isbn}")}" +
@@ -77,7 +75,7 @@ class Book
         return $"Title: {title}{Environment.NewLine}" +
             $"Author: {author}{Environment.NewLine}" +
             $"ISBN: {isbn}{Environment.NewLine}" +
-            $"Category: {category}";
+            $"Category: {category.ToString()}";
     }
 
 }

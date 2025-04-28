@@ -10,8 +10,8 @@ namespace Lexicon5Library
     {
         public static void ErrorMessage(this string message)
         {
-            Console.BackgroundColor = ConsoleColor.Red;
-            Console.WriteLine($"ERROR:{Environment.NewLine}{message}");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"{Environment.NewLine}ERROR:{Environment.NewLine}{message}");
             Console.ResetColor();
         }
     }

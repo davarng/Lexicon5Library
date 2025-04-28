@@ -102,13 +102,20 @@ internal class Program
         string author = Console.ReadLine() ?? "";
         Console.Write($"ISBN: ");
         _ = long.TryParse(Console.ReadLine(), out long isbn);
-        Console.Write($"Category: ");
+        Console.Write($"Category: {Environment.NewLine}");
+
+        foreach (var c in Enum.GetValues<BookCategory>())
+        {
+            Console.WriteLine($"{(int)c + 1}.{c}");
+        }
+
         _ = int.TryParse(Console.ReadLine(), out int categoryInt);
         BookCategory category = (BookCategory)categoryInt - 1;
 
         try
         {
-            Book book = new(title, author, isbn, category, books);
+            Book.ValidateInput(title, author, isbn, category, books);
+            Book book = new(title, author, isbn, category);
             Console.WriteLine($"Book {title} created!{Environment.NewLine}");
             books.Add(book);
             JsonHandler.JsonSaveLibrary(books);
