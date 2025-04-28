@@ -124,13 +124,22 @@ internal class Program
     public static void PrintList(List<Book> listOfBooks)
     {
         Console.Clear();
-        foreach (var book in listOfBooks)
-        {
-            Console.WriteLine($"{book}{Environment.NewLine}" +
-                $"---------------------------------");
 
+        if (listOfBooks.Count > 0)
+        {
+            var sortedListOfBooks = listOfBooks.OrderBy(b => b.Title);
+            foreach (var book in sortedListOfBooks)
+            {
+                Console.WriteLine($"{book}{Environment.NewLine}" +
+                    $"---------------------------------");
+
+            }
+            Console.WriteLine();
         }
-        Console.WriteLine();
+        else
+        {
+            Console.WriteLine("The list is empty...");
+        }
     }
     #endregion
 }
