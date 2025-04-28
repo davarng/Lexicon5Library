@@ -1,10 +1,7 @@
 ﻿using Lexicon5Library.Json;
 using Lexicon5Library.Library;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Lexicon5Library
 {
@@ -15,27 +12,31 @@ namespace Lexicon5Library
             PrintList(books);
             Console.Write("Write ISBN of book: ");
             bool success = long.TryParse(Console.ReadLine(), out long ISBN);
+            var removedBook = books.Find(book => book.Isbn == ISBN);
+            Console.WriteLine();
 
-            if (success && books.Count != 0)
+            if (success & removedBook != null)
             {
-                var removedBook = books.Find(book => book.Isbn == ISBN);
-                if (removedBook != null)
-                {
-                    Console.WriteLine($"Are you sure you want to delete this book: " +
-                        $"{removedBook.Title}, {removedBook.Author}{Environment.NewLine}" +
-                        $"Type: \"delete\" to delete. Otherwise just hit enter.");
+                Console.WriteLine($"Are you sure you want to delete this book: " +
+                $"{removedBook!.Title}, {removedBook.Author}{Environment.NewLine}" +
+                $"Type \"delete\" to delete. Otherwise just hit enter.");
 
-                    var deleteInput = Console.ReadLine() ?? "".ToLower();
-                    if (deleteInput == "delete")
-                    {
-                        books.Remove(removedBook);
-                        Console.WriteLine($"Book {removedBook.Title} has been removed.");
-                        JsonHandler.JsonSaveLibrary(books);
-                    }
+                var deleteInput = Console.ReadLine() ?? string.Empty.ToLower();
+                if (deleteInput == "delete")
+                {
+                    books.Remove(removedBook);
+                    Console.WriteLine($"Book {removedBook.Title} has been removed.");
+                    JsonHandler.JsonSaveLibrary(books);
                 }
+                else
+                    Console.WriteLine("The book was not removed.");
             }
+            else if(books.Count == 0)
+                Console.WriteLine("The library is empty.");
             else
-                Console.WriteLine("Book doesnt exist.");
+                Console.WriteLine("The book you want to remove does not exist.");
+
+            Console.WriteLine();
         }
 
         internal static void AddBook(List<Book> books)
@@ -43,9 +44,9 @@ namespace Lexicon5Library
             Console.Clear();
 
             Console.Write("Title: ");
-            string title = Console.ReadLine() ?? "";
+            string title = Console.ReadLine() ?? string.Empty;
             Console.Write($"Author: ");
-            string author = Console.ReadLine() ?? "";
+            string author = Console.ReadLine() ?? string.Empty;
             Console.Write($"ISBN: ");
             _ = long.TryParse(Console.ReadLine(), out long isbn);
             Console.Write($"Category: {Environment.NewLine}");
