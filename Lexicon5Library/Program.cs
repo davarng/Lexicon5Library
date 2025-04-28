@@ -1,4 +1,5 @@
 ﻿using Lexicon5Library.Json;
+using Lexicon5Library.Library;
 using System;
 using System.Collections;
 using System.Text.Json;
@@ -47,20 +48,15 @@ internal class Program
                     RemoveBook(books);
                     break;
                 case "4":
-                    BookSearchHandler.BookSearchSelection(books);
-                    break;
-                case "5":
-
+                    books.BookSearchSelection();
                     break;
                 case "Q":
                 case "q":
                     Console.WriteLine($"{Environment.NewLine}Closing application window...");
-
                     return;
                 default:
                     Console.Clear();
                     Console.WriteLine("Your input is not valid");
-
                     break;
             }
         }
@@ -72,15 +68,17 @@ internal class Program
     {
         PrintList(books);
         Console.Write("Write ISBN of book: ");
-        bool success = int.TryParse(Console.ReadLine(), out int ISBN);
+        bool success = long.TryParse(Console.ReadLine(), out long ISBN);
 
         if (success && books.Count != 0)
         {
             var removedBook = books.Find(book => book.Isbn == ISBN);
             if (removedBook != null)
             {
-                Console.WriteLine($"Are you sure you want to delete this book: {removedBook.Title}, {removedBook.Author}{Environment.NewLine}" +
+                Console.WriteLine($"Are you sure you want to delete this book: " +
+                    $"{removedBook.Title}, {removedBook.Author}{Environment.NewLine}" +
                     $"Type: \"delete\" to delete. Otherwise just hit enter.");
+
                 var deleteInput = Console.ReadLine() ?? "".ToLower();
                 if (deleteInput == "delete")
                 {
@@ -97,25 +95,28 @@ internal class Program
     private static void AddBook(List<Book> books)
     {
         Console.Clear();
+
         Console.Write("Title: ");
         string title = Console.ReadLine() ?? "";
         Console.Write($"Author: ");
         string author = Console.ReadLine() ?? "";
         Console.Write($"ISBN: ");
-        _ = int.TryParse(Console.ReadLine(), out int isbn);
+        _ = long.TryParse(Console.ReadLine(), out long isbn);
         Console.Write($"Category: ");
-        string category = Console.ReadLine() ?? "";
+        _ = int.TryParse(Console.ReadLine(), out int categoryInt);
+        BookCategory category = (BookCategory)categoryInt - 1;
 
-        if (books.Any(book => book.Isbn == isbn))
+        try
         {
-            Console.WriteLine("A book with this isbn already exists...");
-            return;
+            Book book = new(title, author, isbn, category, books);
+            Console.WriteLine($"Book {title} created!{Environment.NewLine}");
+            books.Add(book);
+            JsonHandler.JsonSaveLibrary(books);
         }
-
-        Book book = new(title, author, isbn, category);
-        Console.WriteLine($"Book {title} created!{Environment.NewLine}");
-        books.Add(book);
-        JsonHandler.JsonSaveLibrary(books);
+        catch (ArgumentException e)
+        {
+            e.Message.ErrorMessage();
+        }
     }
 
     #endregion

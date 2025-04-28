@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lexicon5Library;
+namespace Lexicon5Library.Library;
 
 public static class BookSearchHandler
 {
 
-    internal static void BookSearchSelection(List<Book> books)
+    internal static void BookSearchSelection(this List<Book> books)
     {
         Console.Clear();
         Console.WriteLine($"What would you like to search by?{Environment.NewLine}" +
@@ -53,10 +53,10 @@ public static class BookSearchHandler
     }
 
     //Int version
-    private static void BookSearch(List<Book> books, Func<List<Book>, int, List<Book>> searchBy)
+    private static void BookSearch(List<Book> books, Func<List<Book>, long, List<Book>> searchBy)
     {
         Console.Write("Write word to search for: ");
-        bool success = int.TryParse(Console.ReadLine(), out int searchInt);
+        bool success = long.TryParse(Console.ReadLine(), out long searchInt);
         if (success)
             Program.PrintList(searchBy(books, searchInt));
         else
@@ -65,25 +65,32 @@ public static class BookSearchHandler
 
     private static List<Book> ByAuthor(List<Book> books, string searchWord)
     {
-        var searchedBooks = books.Where(book => book.Author.Contains(searchWord)).ToList();
+        var searchedBooks = books.Where(book => book.Author
+        .Contains(searchWord, StringComparison.OrdinalIgnoreCase)).ToList();
+
         return searchedBooks;
     }
 
     private static List<Book> ByTitle(List<Book> books, string searchWord)
     {
-        var searchedBooks = books.Where(book => book.Title.Contains(searchWord)).ToList();
+        var searchedBooks = books.Where(book => book.Title
+        .Contains(searchWord, StringComparison.OrdinalIgnoreCase)).ToList();
+
         return searchedBooks;
     }
 
-    private static List<Book> ByIsbn(List<Book> books, int searchWord)
+    private static List<Book> ByIsbn(List<Book> books, long searchWord)
     {
         var searchedBooks = books.Where(book => book.Isbn == searchWord).ToList();
+
         return searchedBooks;
     }
 
     private static List<Book> ByCategory(List<Book> books, string searchWord)
     {
-        var searchedBooks = books.Where(book => book.Category.Contains(searchWord)).ToList();
+        var searchedBooks = books.Where(book => book.Category.ToString()
+        .Contains(searchWord, StringComparison.OrdinalIgnoreCase)).ToList();
+
         return searchedBooks;
     }
 

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lexicon5Library;
+namespace Lexicon5Library.Library;
 
 class BorrowedBooks
 {
@@ -18,7 +18,7 @@ class BorrowedBooks
     {
         this.book = book;
         this.user = user;
-        this.borrowDate = DateOnly.FromDateTime(DateTime.Now);
-        this.expiryDate = borrowDate.AddDays(7);
+        borrowDate = DateOnly.FromDateTime(DateTime.Now);
+        expiryDate = borrowDate.AddDays(7);
     }
 }

@@ -1,8 +1,122 @@
 [
   {
-    "Title": "Abra",
-    "Author": "kadabra",
-    "Isbn": 123,
-    "Category": "yes"
+    "Title": "Whispers in the Fog",
+    "Author": "Lila Montgomery",
+    "Isbn": 9781234567897,
+    "Category": "Mystery"
+  },
+  {
+    "Title": "Wings of Eternity",
+    "Author": "E. F. Harper",
+    "Isbn": 1234567890,
+    "Category": "Fantasy"
+  },
+  {
+    "Title": "Cosmic Realms",
+    "Author": "Darin Eldridge",
+    "Isbn": 9876543210123,
+    "Category": "ScienceFiction"
+  },
+  {
+    "Title": "Unmasking the Past",
+    "Author": "Alice Warren",
+    "Isbn": 1012345678987,
+    "Category": "Biography"
+  },
+  {
+    "Title": "Echoes of Time",
+    "Author": "Martin Keller",
+    "Isbn": 9812345678901,
+    "Category": "History"
+  },
+  {
+    "Title": "Heartstrings and Roses",
+    "Author": "Clara Mayfield",
+    "Isbn": 5678901234567,
+    "Category": "Romance"
+  },
+  {
+    "Title": "Behind Closed Doors",
+    "Author": "Victor Hayes",
+    "Isbn": 8901234567890,
+    "Category": "Thriller"
+  },
+  {
+    "Title": "The Art of Mindfulness",
+    "Author": "Tara Sinclair",
+    "Isbn": 5432109876543,
+    "Category": "SelfHelp"
+  },
+  {
+    "Title": "Adventures in Wonderland",
+    "Author": "Martha Winslow",
+    "Isbn": 1238907654321,
+    "Category": "Children"
+  },
+  {
+    "Title": "Dreams of Tomorrow",
+    "Author": "Paul Henderson",
+    "Isbn": 7894561230123,
+    "Category": "YoungAdult"
+  },
+  {
+    "Title": "Shadows of Midnight",
+    "Author": "Graham Doyle",
+    "Isbn": 9873216548901,
+    "Category": "Horror"
+  },
+  {
+    "Title": "Verses from the Heart",
+    "Author": "Emily Barlow",
+    "Isbn": 4567891230987,
+    "Category": "Poetry"
+  },
+  {
+    "Title": "The Last Conspiracy",
+    "Author": "Rachel Adams",
+    "Isbn": 1112131415167,
+    "Category": "Mystery"
+  },
+  {
+    "Title": "The Enchanted Forest",
+    "Author": "Willow Hart",
+    "Isbn": 1617181920213,
+    "Category": "Fantasy"
+  },
+  {
+    "Title": "Across the Stars",
+    "Author": "James Terran",
+    "Isbn": 1718192021223,
+    "Category": "ScienceFiction"
+  },
+  {
+    "Title": "Memoirs of a Survivor",
+    "Author": "Hannah Cross",
+    "Isbn": 1819202122231,
+    "Category": "Biography"
+  },
+  {
+    "Title": "Ancient Civilizations",
+    "Author": "Daniel Grey",
+    "Isbn": 2122232425263,
+    "Category": "History"
+  },
+  {
+    "Title": "A Love to Remember",
+    "Author": "Olivia Bennett",
+    "Isbn": 1234567890321,
+    "Category": "Romance"
+  },
+  {
+    "Title": "The Silent Witness",
+    "Author": "Michael Carter",
+    "Isbn": 9876543210123,
+    "Category": "Thriller"
+  },
+  {
+    "Title": "Finding Inner Peace",
+    "Author": "Sophia Wright",
+    "Isbn": 5432198765432,
+    "Category": "SelfHelp"
   }
 ]
