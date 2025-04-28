@@ -49,7 +49,7 @@ public static class BookSearchHandler
     {
         Console.Write("Write word to search for: ");
         string searchWord = Console.ReadLine() ?? "";
-        Program.PrintList(searchBy(books, searchWord));
+        Person.PrintList(searchBy(books, searchWord));
     }
 
     //Int version
@@ -58,7 +58,7 @@ public static class BookSearchHandler
         Console.Write("Write word to search for: ");
         bool success = long.TryParse(Console.ReadLine(), out long searchInt);
         if (success)
-            Program.PrintList(searchBy(books, searchInt));
+            Person.PrintList(searchBy(books, searchInt));
         else
             Console.WriteLine("Not a valid isbn...");
     }
