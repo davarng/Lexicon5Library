@@ -1,19 +1,10 @@
 ﻿using Lexicon5Library.Json;
 using Lexicon5Library.Library;
-using System;
-using System.Collections;
-using System.Text.Json;
-using System.Text.Json.Serialization.Metadata;
-using System.Xml;
-using static System.Reflection.Metadata.BlobBuilder;
 
 namespace Lexicon5Library;
 
 internal class Program
 {
-    //TODO
-    //Admin panel/user panel
-    //Add/remove category
     static void Main(string[] args)
     {
         List<Book> books = [];
@@ -27,11 +18,6 @@ internal class Program
                 $"2. List books{Environment.NewLine}" +
                 $"3. Remove book{Environment.NewLine}" +
                 $"4. Search book{Environment.NewLine}" +
-                $"5. add category{Environment.NewLine}" +
-                $"6. remove category{Environment.NewLine}" +
-                $"7. login{Environment.NewLine}" +
-                $"8. admin area{Environment.NewLine}" +
-                $"9. user area{Environment.NewLine}" +
                 $"Q. Quit application.");
 
             input = Console.ReadLine() ?? "";
