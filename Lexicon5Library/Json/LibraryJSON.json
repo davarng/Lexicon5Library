@@ -1,14 +1,14 @@
 [
   {
-    "Title": "abra",
-    "Author": "kadabra",
+    "Title": "Name",
+    "Author": "test",
     "Isbn": 123123123123,
-    "Category": 3
+    "Category": 1
   },
   {
-    "Title": "123",
-    "Author": "123",
-    "Isbn": 12312312312,
-    "Category": 2
+    "Title": "1984",
+    "Author": "George Orwell",
+    "Isbn": 1987654321,
+    "Category": 6
   }
 ]

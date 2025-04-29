@@ -21,6 +21,7 @@ internal class Program
                 $"Q. Quit application.");
 
             input = Console.ReadLine() ?? "";
+            Console.Clear();
 
             switch (input)
             {
@@ -41,7 +42,6 @@ internal class Program
                     Console.WriteLine($"{Environment.NewLine}Closing application window...");
                     return;
                 default:
-                    Console.Clear();
                     Console.WriteLine("Your input is not valid");
                     break;
             }

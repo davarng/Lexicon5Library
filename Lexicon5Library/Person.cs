@@ -5,7 +5,7 @@ using static Lexicon5Library.Utility;
 namespace Lexicon5Library
 {
 
-    internal class Person
+    public class Person
     {
         internal static void RemoveBook(List<Book> books)
         {
@@ -38,10 +38,8 @@ namespace Lexicon5Library
             Console.WriteLine();
         }
 
-        internal static void AddBook(List<Book> books)
+        public static void AddBook(List<Book> books)
         {
-            Console.Clear();
-
             string title = InputString("Title: ");
             string author = InputString("Author: ");
             Console.Write($"ISBN: ");
@@ -72,8 +70,6 @@ namespace Lexicon5Library
 
         internal static void PrintList(List<Book> listOfBooks)
         {
-            Console.Clear();
-
             if (listOfBooks.Count > 0)
             {
                 var sortedListOfBooks = listOfBooks.OrderBy(b => b.Title);

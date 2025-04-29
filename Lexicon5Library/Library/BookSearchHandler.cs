@@ -7,7 +7,6 @@ public static class BookSearchHandler
 
     internal static void BookSearchSelection(this List<Book> books)
     {
-        Console.Clear();
         string input = InputString($"What would you like to search by?{Environment.NewLine}" +
             $"1. Author{Environment.NewLine}" +
             $"2. Title{Environment.NewLine}" +
@@ -43,6 +42,7 @@ public static class BookSearchHandler
     private static void BookSearch(List<Book> books, Func<List<Book>, string, List<Book>> searchBy)
     {
         string searchWord = InputString("Write word to search for: ");
+        Console.Clear();
         Person.PrintList(searchBy(books, searchWord));
     }
 
@@ -52,7 +52,10 @@ public static class BookSearchHandler
         Console.Write("Write word to search for: ");
         bool success = long.TryParse(Console.ReadLine(), out long searchInt);
         if (success)
+        {
+            Console.Clear();
             Person.PrintList(searchBy(books, searchInt));
+        }
         else
             Console.WriteLine("Not a valid isbn...");
     }
