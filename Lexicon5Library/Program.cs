@@ -37,6 +37,9 @@ internal class Program
                 case "4":
                     books.BookSearchSelection();
                     break;
+                case "5":
+                    Person.SetBookStatus(books);
+                    break;
                 case "Q":
                 case "q":
                     Console.WriteLine($"{Environment.NewLine}Closing application window...");

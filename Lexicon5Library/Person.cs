@@ -1,12 +1,40 @@
 ﻿using Lexicon5Library.Json;
 using Lexicon5Library.Library;
 using static Lexicon5Library.Utility;
+using static System.Reflection.Metadata.BlobBuilder;
 
 namespace Lexicon5Library
 {
 
     public class Person
     {
+        //List book => book
+        internal static void SetBookStatus(List<Book> books)
+        {
+            PrintList(books);
+            Console.Write("Write ISBN of book: ");
+            bool success = long.TryParse(Console.ReadLine(), out long ISBN);
+            var book = books.Find(book => book.Isbn == ISBN);
+
+            if (success & book != null)
+            {
+                book!.IsAvailable = !book.IsAvailable;
+            }
+            else if (books.Count == 0)
+                Console.WriteLine("No books to change status on.");
+            else
+                Console.WriteLine("The book you chose does not exist.");
+        }
+        internal static void SetBookAvailable(Book book)
+        {
+            //book false
+            book.IsAvailable = true;
+        }
+        internal static void SetBookNotAvailable(Book book)
+        {
+            //book true
+            book.IsAvailable = false;
+        }
         internal static void RemoveBook(List<Book> books)
         {
             PrintList(books);

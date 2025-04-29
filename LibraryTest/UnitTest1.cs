@@ -34,7 +34,7 @@ public class UnitTest1
     public void CreateNewBook_WithInvalidField_ShouldReturn(string title, string author, string isbn, string category)
     {
         //Arrange
-        List<Book> books = new() { new("Name", "test", 123123123123, (BookCategory)1) };
+        List<Book> books = [new("Name", "test", 123123123123, (BookCategory)1)];
 
         Console.SetIn(new StringReader($"{title}\n{author}\n{isbn}\n{category}\n"));
 
@@ -44,26 +44,4 @@ public class UnitTest1
         //Assert
         Assert.Single(books);
     }
-
-    //[Fact]
-    //public void Test1()
-    //{
-    //    //Arrange
-
-    //    //Act
-
-    //    //Assert
-
-    //}
-
-    //[Fact]
-    //public void Test3()
-    //{
-    //    //Arrange
-
-    //    //Act
-
-    //    //Assert
-
-    //}
 }

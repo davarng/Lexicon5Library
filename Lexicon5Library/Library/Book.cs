@@ -2,39 +2,19 @@
 
 public class Book
 {
-    private string title;
-    private string author;
-    private long isbn;
-    private BookCategory category;
-
-    public string Title
-    {
-        get { return title; }
-        set { title = value; }
-    }
-    public string Author
-    {
-        get { return author; }
-        set { author = value; }
-    }
-    public long Isbn
-    {
-        get { return isbn; }
-        set { isbn = value; }
-    }
-
-    public BookCategory Category
-    {
-        get { return category; }
-        set { category = value; }
-    }
+    public string Title { get; set; }
+    public string Author { get; set; }
+    public long Isbn { get; set; }
+    public BookCategory Category { get; set; }
+    public bool IsAvailable { get; set; }
 
     public Book(string title, string author, long isbn, BookCategory category)
     {
-        this.title = title;
-        this.author = author;
-        this.isbn = isbn;
-        this.category = category;
+        Title = title;
+        Author = author;
+        Isbn = isbn;
+        Category = category;
+        IsAvailable = true;
     }
 
     internal static void ValidateInput(string title, string author, long isbn, BookCategory category, List<Book> books)
@@ -66,10 +46,11 @@ public class Book
 
     public override string ToString()
     {
-        return $"Title: {title}{Environment.NewLine}" +
-            $"Author: {author}{Environment.NewLine}" +
-            $"ISBN: {isbn}{Environment.NewLine}" +
-            $"Category: {category.ToString()}";
+        return $"Title: {Title}{Environment.NewLine}" +
+            $"Author: {Author}{Environment.NewLine}" +
+            $"ISBN: {Isbn}{Environment.NewLine}" +
+            $"Category: {Category}{Environment.NewLine}" +
+            $"Is available: {IsAvailable}";
     }
 
 }
