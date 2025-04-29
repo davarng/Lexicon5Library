@@ -1,7 +1,5 @@
 ﻿using Lexicon5Library.Json;
 using Lexicon5Library.Library;
-using System;
-using System.Linq;
 using static Lexicon5Library.Utility;
 
 namespace Lexicon5Library

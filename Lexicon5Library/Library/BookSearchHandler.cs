@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static Lexicon5Library.Utility;
+﻿using static Lexicon5Library.Utility;
 
 namespace Lexicon5Library.Library;
 

@@ -1,11 +1,5 @@
 ﻿using Lexicon5Library.Library;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
-
 namespace Lexicon5Library.Json;
 
 internal static class JsonHandler
@@ -44,8 +38,7 @@ internal static class JsonHandler
     {
         if (!JsonFileExists()) return;
 
-        var options = new JsonSerializerOptions { WriteIndented = true };
-        string jsonString = JsonSerializer.Serialize(listOfBooks, options);
+        string jsonString = JsonSerializer.Serialize(listOfBooks, new JsonSerializerOptions { WriteIndented = true });
         File.WriteAllText(jsonFilePath, jsonString);
         Console.WriteLine("Library updated.");
     }
