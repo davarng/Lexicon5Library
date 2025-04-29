@@ -2,9 +2,11 @@
 using Lexicon5Library.Library;
 using System;
 using System.Linq;
+using static Lexicon5Library.Utility;
 
 namespace Lexicon5Library
 {
+
     internal class Person
     {
         internal static void RemoveBook(List<Book> books)
@@ -17,11 +19,10 @@ namespace Lexicon5Library
 
             if (success & removedBook != null)
             {
-                Console.WriteLine($"Are you sure you want to delete this book: " +
+                string deleteInput = InputString($"Are you sure you want to delete this book: " +
                 $"{removedBook!.Title}, {removedBook.Author}{Environment.NewLine}" +
                 $"Type \"delete\" to delete. Otherwise just hit enter.");
 
-                var deleteInput = Console.ReadLine() ?? string.Empty.ToLower();
                 if (deleteInput == "delete")
                 {
                     books.Remove(removedBook);
@@ -31,7 +32,7 @@ namespace Lexicon5Library
                 else
                     Console.WriteLine("The book was not removed.");
             }
-            else if(books.Count == 0)
+            else if (books.Count == 0)
                 Console.WriteLine("The library is empty.");
             else
                 Console.WriteLine("The book you want to remove does not exist.");
@@ -43,10 +44,8 @@ namespace Lexicon5Library
         {
             Console.Clear();
 
-            Console.Write("Title: ");
-            string title = Console.ReadLine() ?? string.Empty;
-            Console.Write($"Author: ");
-            string author = Console.ReadLine() ?? string.Empty;
+            string title = InputString("Title: ");
+            string author = InputString("Author: ");
             Console.Write($"ISBN: ");
             _ = long.TryParse(Console.ReadLine(), out long isbn);
             Console.Write($"Category: {Environment.NewLine}");

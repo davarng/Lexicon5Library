@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Lexicon5Library.Utility;
 
 namespace Lexicon5Library.Library;
 
@@ -12,12 +13,11 @@ public static class BookSearchHandler
     internal static void BookSearchSelection(this List<Book> books)
     {
         Console.Clear();
-        Console.WriteLine($"What would you like to search by?{Environment.NewLine}" +
+        string input = InputString($"What would you like to search by?{Environment.NewLine}" +
             $"1. Author{Environment.NewLine}" +
             $"2. Title{Environment.NewLine}" +
             $"3. Isbn{Environment.NewLine}" +
             $"4. Category");
-        string input = Console.ReadLine() ?? "";
 
         switch (input)
         {
@@ -47,8 +47,7 @@ public static class BookSearchHandler
     //String version
     private static void BookSearch(List<Book> books, Func<List<Book>, string, List<Book>> searchBy)
     {
-        Console.Write("Write word to search for: ");
-        string searchWord = Console.ReadLine() ?? "";
+        string searchWord = InputString("Write word to search for: ");
         Person.PrintList(searchBy(books, searchWord));
     }
 

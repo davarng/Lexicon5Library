@@ -14,5 +14,11 @@ namespace Lexicon5Library
             Console.WriteLine($"{Environment.NewLine}ERROR:{Environment.NewLine}{message}");
             Console.ResetColor();
         }
+
+        public static string InputString(string question)
+        {
+            Console.WriteLine(question);
+            return Console.ReadLine() ?? "";
+        }
     }
 }
