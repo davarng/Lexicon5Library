@@ -33,7 +33,7 @@ public class User
             //User.ValidateInput(title, author, isbn, category, books);
             User user = new(email, HashAndSaltPassword(password), firstName, lastName);
             Console.WriteLine($"Account created!");
-            users.Add(user);
+            users.Add(UserFactory.CreateUser("", email, HashAndSaltPassword(password), firstName, lastName));
             JsonHandler.JsonSaveGeneric(users, JsonHandler.userFilePath);
         }
         catch (ArgumentException e)
@@ -53,7 +53,7 @@ public class User
 
         if (user != null || users.Count > 0)
         {
-            var saltHash = user.Password.Split(':');
+            var saltHash = user!.Password.Split(':');
             byte[] salt = Convert.FromBase64String(saltHash[0]);
 
             using var passwordHasher = new Rfc2898DeriveBytes(password, salt, 100000, HashAlgorithmName.SHA256);

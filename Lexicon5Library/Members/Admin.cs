@@ -6,7 +6,7 @@ namespace Lexicon5Library.Members;
 
 public class Admin : User
 {
-    public Admin(string email, string password, string name, string surName) : base(email, password, name, surName)
+    public Admin(string email, string password, string name, string lastName) : base(email, password, name, lastName)
     {
     }
 
