@@ -19,10 +19,11 @@ namespace Lexicon5Library
             if (success & book != null)
             {
                 book!.IsAvailable = !book.IsAvailable;
+                Console.WriteLine($"Book {book.Title} is now: {(book.IsAvailable ? "":"not ")}available");
                 JsonHandler.JsonSaveLibrary(books);
             }
             else if (books.Count == 0)
-                Console.WriteLine("No books to change status on.");
+                Console.WriteLine("No books in library.");
             else
                 Console.WriteLine("The book you chose does not exist.");
         }
@@ -41,7 +42,7 @@ namespace Lexicon5Library
                 $"{removedBook!.Title}, {removedBook.Author}{Environment.NewLine}" +
                 $"Type \"delete\" to delete. Otherwise just hit enter.");
 
-                if (deleteInput == "delete")
+                if (deleteInput.ToLower() == "delete")
                 {
                     books.Remove(removedBook);
                     Console.WriteLine($"Book {removedBook.Title} has been removed.");

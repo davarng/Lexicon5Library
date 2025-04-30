@@ -23,6 +23,7 @@ public class UnitTest1
         Assert.Equal("George Orwell", books[1].Author);
         Assert.Equal(1987654321, books[1].Isbn);
         Assert.Equal((BookCategory)6, books[1].Category);
+        Assert.True(books[1].IsAvailable);
     }
 
     [Theory]

@@ -47,18 +47,28 @@ public static class BookSearchHandler
     {
         string searchWord = InputString("Write word to search for: ");
         Console.Clear();
-        Person.PrintList(searchBy(books, searchWord));
+        var output = searchBy(books, searchWord);
+
+        if (output.Count > 0)
+            Person.PrintList(output);
+        else
+            Console.WriteLine("No results found.");
     }
 
     //Int version
     private static void BookSearch(List<Book> books, Func<List<Book>, long, List<Book>> searchBy)
     {
-        Console.Write("Write word to search for: ");
+        Console.Write("Write number to search for: ");
         bool success = long.TryParse(Console.ReadLine(), out long searchInt);
         if (success)
         {
             Console.Clear();
-            Person.PrintList(searchBy(books, searchInt));
+            var output = searchBy(books, searchInt);
+
+            if (output.Count > 0)
+                Person.PrintList(output);
+            else
+                Console.WriteLine("No results found.");
         }
         else
             Console.WriteLine("Not a valid isbn...");
