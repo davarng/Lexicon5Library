@@ -6,8 +6,10 @@ namespace Lexicon5Library.Members;
 
 public class Admin : User
 {
-    public Admin(string email, string password, string name, string lastName) : base(email, password, name, lastName)
+    public Admin(string email, string password, string name, string lastName)
+        : base(email, password, name, lastName)
     {
+        Role = UserRole.Admin;
     }
 
     internal static void RemoveBook(List<Book> books)

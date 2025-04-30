@@ -25,10 +25,10 @@ internal class Program
             {
                 case "1":
                     //WIP
-                    loggedInUser = User.SignIn(users);
+                    loggedInUser = AccountService.SignIn(users);
                     break;
                 case "2":
-                    User.SignUp(users);
+                    AccountService.SignUp(users);
                     break;
                 case "Q":
                 case "q":
