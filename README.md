@@ -1,5 +1,6 @@
 <div align="left">
-#📚 Lexicon5Library - C# Console Library App
+
+# 📚 Lexicon5Library - C# Console Library App
 
 ## Description
 **Lexicon5Library** is a C# console application designed to manage a collection of books. This library app lets you:
