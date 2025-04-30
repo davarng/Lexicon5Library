@@ -19,15 +19,15 @@ namespace Lexicon5Library
             if (success & book != null)
             {
                 book!.IsAvailable = !book.IsAvailable;
-                Console.WriteLine($"Book {book.Title} is now: {(book.IsAvailable ? "":"not ")}available");
-                JsonHandler.JsonSaveLibrary(books);
+                Console.WriteLine($"Book {book.Title} is now: {(book.IsAvailable ? "" : "not ")}available");
+                JsonHandler.JsonSaveLibrary(books, JsonHandler.jsonFilePath);
             }
             else if (books.Count == 0)
                 Console.WriteLine("No books in library.");
             else
                 Console.WriteLine("The book you chose does not exist.");
         }
-  
+
         internal static void RemoveBook(List<Book> books)
         {
             PrintList(books);
@@ -46,7 +46,7 @@ namespace Lexicon5Library
                 {
                     books.Remove(removedBook);
                     Console.WriteLine($"Book {removedBook.Title} has been removed.");
-                    JsonHandler.JsonSaveLibrary(books);
+                    JsonHandler.JsonSaveLibrary(books, JsonHandler.jsonFilePath);
                 }
                 else
                     Console.WriteLine("The book was not removed.");
@@ -81,7 +81,7 @@ namespace Lexicon5Library
                 Book book = new(title, author, isbn, category);
                 Console.WriteLine($"Book {title} created!{Environment.NewLine}");
                 books.Add(book);
-                JsonHandler.JsonSaveLibrary(books);
+                JsonHandler.JsonSaveLibrary(books, JsonHandler.jsonFilePath);
             }
             catch (ArgumentException e)
             {

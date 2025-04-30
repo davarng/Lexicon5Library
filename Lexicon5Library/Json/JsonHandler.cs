@@ -4,11 +4,11 @@ namespace Lexicon5Library.Json;
 
 internal static class JsonHandler
 {
-    private const string jsonFilePath = @"Json\LibraryJSON.json";
+    public const string jsonFilePath = @"Json\LibraryJSON.json";
 
-    private static bool JsonFileExists()
+    private static bool JsonFileExists(string filePath)
     {
-        if (File.Exists(jsonFilePath))
+        if (File.Exists(filePath))
         {
             return true;
         }
@@ -19,11 +19,36 @@ internal static class JsonHandler
         }
     }
 
-    public static void JsonLoadLibrary(ref List<Book> listOfBooks)
+    //Work in progress
+    public static void JsonLoadGeneric<T>(ref List<T> listOfGenerics, string filePath)
     {
-        if (!JsonFileExists()) return;
+        if (!JsonFileExists(filePath)) return;
 
-        var listOfBooksCheck = File.ReadAllText(jsonFilePath);
+        var listOfGenericsCheck = File.ReadAllText(filePath);
+
+        if (!string.IsNullOrWhiteSpace(listOfGenericsCheck))
+            listOfGenerics = JsonSerializer.Deserialize<List<T>>(listOfGenericsCheck) ?? listOfGenerics;
+
+        if (listOfGenerics.Count > 0)
+            Console.WriteLine($"{typeof(T).Name}s loaded from file.");
+        else
+            Console.WriteLine($"The file contains no {typeof(T).Name}s.");
+    }
+
+    public static void JsonSaveGeneric<T>(List<T> listOfGenerics, string filePath)
+    {
+        if (!JsonFileExists(filePath)) return;
+
+        string jsonString = JsonSerializer.Serialize(listOfGenerics, new JsonSerializerOptions { WriteIndented = true });
+        File.WriteAllText(filePath, jsonString);
+        Console.WriteLine($"{typeof(T).Name} file updated.");
+    }
+
+    public static void JsonLoadLibrary(ref List<Book> listOfBooks, string filePath)
+    {
+        if (!JsonFileExists(filePath)) return;
+
+        var listOfBooksCheck = File.ReadAllText(filePath);
 
         if (!string.IsNullOrWhiteSpace(listOfBooksCheck))
             listOfBooks = JsonSerializer.Deserialize<List<Book>>(listOfBooksCheck) ?? listOfBooks;
@@ -34,12 +59,13 @@ internal static class JsonHandler
             Console.WriteLine("Library is empty.");
     }
 
-    public static void JsonSaveLibrary(List<Book> listOfBooks)
+
+    public static void JsonSaveLibrary(List<Book> listOfBooks, string filePath)
     {
-        if (!JsonFileExists()) return;
+        if (!JsonFileExists(filePath)) return;
 
         string jsonString = JsonSerializer.Serialize(listOfBooks, new JsonSerializerOptions { WriteIndented = true });
-        File.WriteAllText(jsonFilePath, jsonString);
+        File.WriteAllText(filePath, jsonString);
         Console.WriteLine("Library updated.");
     }
 }

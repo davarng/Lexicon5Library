@@ -8,7 +8,7 @@ internal class Program
     static void Main(string[] args)
     {
         List<Book> books = [];
-        JsonHandler.JsonLoadLibrary(ref books);
+        JsonHandler.JsonLoadLibrary(ref books, JsonHandler.jsonFilePath);
         string input;
 
         while (true)
