@@ -1,7 +1,7 @@
 ﻿using Lexicon5Library.Json;
 using Lexicon5Library.Library;
 using Lexicon5Library.Members;
-
+using static Lexicon5Library.Utility;
 namespace Lexicon5Library;
 
 internal class Program
@@ -9,14 +9,34 @@ internal class Program
     static void Main(string[] args)
     {
         List<Book> books = [];
+        List<User> users = [];
         JsonHandler.JsonLoadGeneric(ref books, JsonHandler.jsonFilePath);
+        JsonHandler.JsonLoadGeneric(ref users, JsonHandler.userFilePath);
+
         string input;
+        User? loggedInUser = null;
 
         while (true)
         {
-            bool loggedIn = true;
+            string accountInput = InputString($"1. Login{Environment.NewLine}" +
+                $"2. Create account");
 
-            while (loggedIn)
+            switch (accountInput)
+            {
+                case "1":
+                    //WIP
+                    loggedInUser = User.SignIn(users);
+                    break;
+                case "2":
+                    User.SignUp(users);
+                    break;
+                case "Q":
+                case "q":
+                    Console.WriteLine($"{Environment.NewLine}Closing application window...");
+                    return;
+            }
+
+            while (loggedInUser != null)
             {
                 Console.WriteLine($"Write one of the options.{Environment.NewLine}" +
                     $"1. (ADMIN)Create book{Environment.NewLine}" +
@@ -24,8 +44,9 @@ internal class Program
                     $"3. (ADMIN)Remove book{Environment.NewLine}" +
                     $"4. Search book{Environment.NewLine}" +
                     $"5. Change book availability{Environment.NewLine}" +
-                    $"6. Log out{Environment.NewLine}" +
-                    $"Q. Quit application.");
+                    $"6. Log out{Environment.NewLine}");
+
+
 
                 input = Console.ReadLine() ?? "";
                 Console.Clear();
@@ -47,10 +68,6 @@ internal class Program
                     case "5":
                         User.SetBookStatus(books);
                         break;
-                    case "Q":
-                    case "q":
-                        Console.WriteLine($"{Environment.NewLine}Closing application window...");
-                        return;
                     default:
                         Console.WriteLine("Your input is not valid");
                         break;

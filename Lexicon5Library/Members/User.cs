@@ -1,5 +1,6 @@
 ﻿using Lexicon5Library.Json;
 using Lexicon5Library.Library;
+using System;
 using System.Security.Cryptography;
 using static Lexicon5Library.Utility;
 namespace Lexicon5Library.Members;
@@ -20,13 +21,12 @@ public class User
         LastName = lastName;
     }
 
-    public static void SignUp()
+    public static void SignUp(List<User> users)
     {
         string email = InputString("Email: ");
         string firstName = InputString("First name: ");
         string lastName = InputString("Last name: ");
         string password = InputString("Password(min 10 chars): ");
-        List<User> users = new List<User>();
 
         try
         {
@@ -34,12 +34,39 @@ public class User
             User user = new(email, password, firstName, lastName);
             Console.WriteLine($"Account created!");
             users.Add(user);
-            JsonHandler.JsonSaveGeneric(users, JsonHandler.jsonFilePath);
+            JsonHandler.JsonSaveGeneric(users, JsonHandler.userFilePath);
         }
         catch (ArgumentException e)
         {
             e.Message.ErrorMessage();
         }
+    }
+
+    internal static User? SignIn(List<User> users)
+    {
+        string email = InputString("Enter your email: ");
+        string password = InputString("Enter your password: ");
+
+        var user = users.FirstOrDefault(user => user.Email == email);
+
+        if (user != null)
+        {
+            var saltHash = user.Password.Split(':');
+            byte[] salt = Convert.FromBase64String(saltHash[0]);
+
+            using var passwordHasher = new Rfc2898DeriveBytes(password, salt, 100000, HashAlgorithmName.SHA256);
+
+            string hash = Convert.ToBase64String(passwordHasher.GetBytes(32));
+
+            if (hash == saltHash[1])
+            {
+                Console.WriteLine($"Welcome back to the library {user.Name} {user.LastName}");
+                return user;
+            }
+        }
+
+        Console.WriteLine("Invalid email or password.");
+        return null;
     }
 
     private static string HashAndSaltPassword(string password)
