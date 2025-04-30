@@ -27,19 +27,19 @@ internal class Program
             switch (input)
             {
                 case "1":
-                    Person.AddBook(books);
+                    User.AddBook(books);
                     break;
                 case "2":
-                    Person.PrintList(books);
+                    User.PrintList(books);
                     break;
                 case "3":
-                    Person.RemoveBook(books);
+                    User.RemoveBook(books);
                     break;
                 case "4":
                     books.BookSearchSelection();
                     break;
                 case "5":
-                    Person.SetBookStatus(books);
+                    User.SetBookStatus(books);
                     break;
                 case "Q":
                 case "q":

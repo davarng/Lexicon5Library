@@ -6,7 +6,7 @@ using static System.Reflection.Metadata.BlobBuilder;
 namespace Lexicon5Library
 {
 
-    public class Person
+    public class User
     {
         //List book => book
         internal static void SetBookStatus(List<Book> books)

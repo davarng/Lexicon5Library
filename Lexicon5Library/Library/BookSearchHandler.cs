@@ -50,7 +50,7 @@ public static class BookSearchHandler
         var output = searchBy(books, searchWord);
 
         if (output.Count > 0)
-            Person.PrintList(output);
+            User.PrintList(output);
         else
             Console.WriteLine("No results found.");
     }
@@ -66,7 +66,7 @@ public static class BookSearchHandler
             var output = searchBy(books, searchInt);
 
             if (output.Count > 0)
-                Person.PrintList(output);
+                User.PrintList(output);
             else
                 Console.WriteLine("No results found.");
         }
