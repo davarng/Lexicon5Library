@@ -4,7 +4,7 @@ namespace Lexicon5Library.Json;
 
 internal static class JsonHandler
 {
-    private const string jsonFilePath = @"C:\Lexicon kod\LexiconUppgifter\Lexicon5Library\Lexicon5Library\Json\LibraryJSON.json";
+    private const string jsonFilePath = @"Json\LibraryJSON.json";
 
     private static bool JsonFileExists()
     {
