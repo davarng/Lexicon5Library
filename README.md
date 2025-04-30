@@ -1,3 +1,4 @@
+<div align="left">
 # 📚 Lexicon5Library - C# Console Library App
 
 ## Description
@@ -51,5 +52,5 @@ Read the menu and chose one of the selections and hit enter.
   - Availability
 
 ## Tests
-Before running the application, make sure you have the following installed:
+</div>
 - .NET
