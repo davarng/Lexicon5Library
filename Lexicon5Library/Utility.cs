@@ -11,7 +11,7 @@
 
         public static string InputString(string question)
         {
-            Console.WriteLine(question);
+            Console.Write(question);
             return Console.ReadLine() ?? "";
         }
     }

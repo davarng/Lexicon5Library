@@ -11,7 +11,7 @@ public static class BookSearchHandler
             $"1. Author{Environment.NewLine}" +
             $"2. Title{Environment.NewLine}" +
             $"3. Isbn{Environment.NewLine}" +
-            $"4. Category");
+            $"4. Category{Environment.NewLine}");
 
         switch (input)
         {
@@ -29,6 +29,10 @@ public static class BookSearchHandler
                 break;
             case "4":
                 BookSearch(books, ByCategory);
+
+                break;
+            case "5":
+                BookSearch(books, ByAvailable);
 
                 break;
             default:
@@ -66,6 +70,15 @@ public static class BookSearchHandler
         .Contains(searchWord, StringComparison.OrdinalIgnoreCase)).ToList();
 
         return searchedBooks;
+    }
+
+    private static List<Book> ByAvailable(List<Book> books, string searchWord)
+    {
+        searchWord = searchWord.ToLower();
+
+        var boolBooks = books.Where(book => book.IsAvailable == (searchWord == "true" ? true : searchWord == "false" ? false : true || false)).ToList();
+
+        return boolBooks;
     }
 
     private static List<Book> ByTitle(List<Book> books, string searchWord)

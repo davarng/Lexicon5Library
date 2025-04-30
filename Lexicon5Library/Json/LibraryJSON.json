@@ -1,14 +1,233 @@
 [
   {
-    "Title": "Name",
-    "Author": "test",
-    "Isbn": 123123123123,
-    "Category": 1
+    "Title": "The Power of Data",
+    "Author": "John Doe",
+    "Isbn": 9781234567890,
+    "Category": 11,
+    "IsAvailable": true
   },
   {
-    "Title": "1984",
-    "Author": "George Orwell",
-    "Isbn": 1987654321,
-    "Category": 6
+    "Title": "Exploring the Unknown",
+    "Author": "Jane Smith",
+    "Isbn": 9876543210123,
+    "Category": 7,
+    "IsAvailable": false
+  },
+  {
+    "Title": "Introduction to Algorithms",
+    "Author": "Thomas H. Cormen",
+    "Isbn": 9780987654321,
+    "Category": 5,
+    "IsAvailable": true
+  },
+  {
+    "Title": "Advanced Data Structures",
+    "Author": "Mike Johnson",
+    "Isbn": 9783124567890,
+    "Category": 2,
+    "IsAvailable": false
+  },
+  {
+    "Title": "AI and Machine Learning",
+    "Author": "David Williams",
+    "Isbn": 9785432109876,
+    "Category": 8,
+    "IsAvailable": true
+  },
+  {
+    "Title": "Modern Web Development",
+    "Author": "Sarah Lee",
+    "Isbn": 9781346790862,
+    "Category": 4,
+    "IsAvailable": false
+  },
+  {
+    "Title": "Deep Learning for Beginners",
+    "Author": "Mark Davis",
+    "Isbn": 9798765432100,
+    "Category": 6,
+    "IsAvailable": true
+  },
+  {
+    "Title": "The Art of Coding",
+    "Author": "Emily Brown",
+    "Isbn": 9876123456789,
+    "Category": 1,
+    "IsAvailable": true
+  },
+  {
+    "Title": "Web Security Essentials",
+    "Author": "Chris Wilson",
+    "Isbn": 9790234567890,
+    "Category": 0,
+    "IsAvailable": false
+  },
+  {
+    "Title": "Data Science in Practice",
+    "Author": "Rachel Green",
+    "Isbn": 9783128796543,
+    "Category": 9,
+    "IsAvailable": true
+  },
+  {
+    "Title": "Cloud Computing Guide",
+    "Author": "James Clark",
+    "Isbn": 9876543215678,
+    "Category": 2,
+    "IsAvailable": false
+  },
+  {
+    "Title": "Networking Fundamentals",
+    "Author": "Daniel Harris",
+    "Isbn": 9786512345678,
+    "Category": 0,
+    "IsAvailable": true
+  },
+  {
+    "Title": "Python for Data Analysis",
+    "Author": "Linda Hall",
+    "Isbn": 9798453126790,
+    "Category": 4,
+    "IsAvailable": true
+  },
+  {
+    "Title": "Introduction to Cybersecurity",
+    "Author": "Barbara Taylor",
+    "Isbn": 9876543212345,
+    "Category": 3,
+    "IsAvailable": false
+  },
+  {
+    "Title": "Mobile App Development",
+    "Author": "William Lewis",
+    "Isbn": 9782345678901,
+    "Category": 6,
+    "IsAvailable": false
+  },
+  {
+    "Title": "Quantum Computing Explained",
+    "Author": "George Harris",
+    "Isbn": 9789876543210,
+    "Category": 9,
+    "IsAvailable": false
+  },
+  {
+    "Title": "Artificial Intelligence Principles",
+    "Author": "Sarah Nelson",
+    "Isbn": 9798765432345,
+    "Category": 5,
+    "IsAvailable": true
+  },
+  {
+    "Title": "Blockchain for Beginners",
+    "Author": "Jessica Martin",
+    "Isbn": 9790134768901,
+    "Category": 8,
+    "IsAvailable": false
+  },
+  {
+    "Title": "Understanding the Internet of Things",
+    "Author": "Sophia Wright",
+    "Isbn": 9782345678902,
+    "Category": 7,
+    "IsAvailable": true
+  },
+  {
+    "Title": "Data Visualization Mastery",
+    "Author": "Brian Moore",
+    "Isbn": 9876543219876,
+    "Category": 2,
+    "IsAvailable": true
+  },
+  {
+    "Title": "Introduction to Databases",
+    "Author": "James White",
+    "Isbn": 9785678901234,
+    "Category": 1,
+    "IsAvailable": false
+  },
+  {
+    "Title": "The Future of AI",
+    "Author": "David King",
+    "Isbn": 9783212345678,
+    "Category": 0,
+    "IsAvailable": true
+  },
+  {
+    "Title": "Advanced Machine Learning",
+    "Author": "Maria Young",
+    "Isbn": 9798761234567,
+    "Category": 4,
+    "IsAvailable": true
+  },
+  {
+    "Title": "Building Scalable Systems",
+    "Author": "Charles Thomas",
+    "Isbn": 9876543217654,
+    "Category": 9,
+    "IsAvailable": false
+  },
+  {
+    "Title": "Data Mining Concepts",
+    "Author": "Jessica Lewis",
+    "Isbn": 9790212345678,
+    "Category": 5,
+    "IsAvailable": true
+  },
+  {
+    "Title": "Ethical Hacking",
+    "Author": "Andrew Scott",
+    "Isbn": 9789876549876,
+    "Category": 6,
+    "IsAvailable": false
+  },
+  {
+    "Title": "Mastering SQL",
+    "Author": "Megan Davis",
+    "Isbn": 9790198765432,
+    "Category": 2,
+    "IsAvailable": true
+  },
+  {
+    "Title": "Introduction to Cloud Services",
+    "Author": "Peter Harris",
+    "Isbn": 9876123456780,
+    "Category": 3,
+    "IsAvailable": true
+  },
+  {
+    "Title": "Smart Cities and IoT",
+    "Author": "Nancy Clark",
+    "Isbn": 9798765432123,
+    "Category": 8,
+    "IsAvailable": false
+  },
+  {
+    "Title": "The Basics of Digital Marketing",
+    "Author": "Linda Green",
+    "Isbn": 9782345678964,
+    "Category": 7,
+    "IsAvailable": true
+  },
+  {
+    "Title": "Computational Biology",
+    "Author": "John Anderson",
+    "Isbn": 9790432167890,
+    "Category": 9,
+    "IsAvailable": false
+  },
+  {
+    "Title": "Principles of Software Engineering",
+    "Author": "Mark Adams",
+    "Isbn": 9781234567899,
+    "Category": 1,
+    "IsAvailable": true
+  },
+  {
+    "Title": "Python Programming for Everyone",
+    "Author": "Ellen Roberts",
+    "Isbn": 9876532123456,
+    "Category": 0,
+    "IsAvailable": true
   }
 ]

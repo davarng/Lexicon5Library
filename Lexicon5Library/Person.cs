@@ -19,22 +19,14 @@ namespace Lexicon5Library
             if (success & book != null)
             {
                 book!.IsAvailable = !book.IsAvailable;
+                JsonHandler.JsonSaveLibrary(books);
             }
             else if (books.Count == 0)
                 Console.WriteLine("No books to change status on.");
             else
                 Console.WriteLine("The book you chose does not exist.");
         }
-        internal static void SetBookAvailable(Book book)
-        {
-            //book false
-            book.IsAvailable = true;
-        }
-        internal static void SetBookNotAvailable(Book book)
-        {
-            //book true
-            book.IsAvailable = false;
-        }
+  
         internal static void RemoveBook(List<Book> books)
         {
             PrintList(books);

@@ -18,6 +18,7 @@ internal class Program
                 $"2. List books{Environment.NewLine}" +
                 $"3. Remove book{Environment.NewLine}" +
                 $"4. Search book{Environment.NewLine}" +
+                $"5. Change book availability{Environment.NewLine}" +
                 $"Q. Quit application.");
 
             input = Console.ReadLine() ?? "";
