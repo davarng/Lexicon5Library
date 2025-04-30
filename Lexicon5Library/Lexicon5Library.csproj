@@ -8,6 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Update="Json\UserJSON.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Json\LibraryJSON.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

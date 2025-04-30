@@ -44,22 +44,6 @@ internal static class JsonHandler
         Console.WriteLine($"{typeof(T).Name} file updated.");
     }
 
-    public static void JsonLoadLibrary(ref List<Book> listOfBooks, string filePath)
-    {
-        if (!JsonFileExists(filePath)) return;
-
-        var listOfBooksCheck = File.ReadAllText(filePath);
-
-        if (!string.IsNullOrWhiteSpace(listOfBooksCheck))
-            listOfBooks = JsonSerializer.Deserialize<List<Book>>(listOfBooksCheck) ?? listOfBooks;
-
-        if (listOfBooks.Count > 0)
-            Console.WriteLine("Library loaded.");
-        else
-            Console.WriteLine("Library is empty.");
-    }
-
-
     public static void JsonSaveLibrary(List<Book> listOfBooks, string filePath)
     {
         if (!JsonFileExists(filePath)) return;

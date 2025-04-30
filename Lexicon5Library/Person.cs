@@ -20,7 +20,7 @@ namespace Lexicon5Library
             {
                 book!.IsAvailable = !book.IsAvailable;
                 Console.WriteLine($"Book {book.Title} is now: {(book.IsAvailable ? "" : "not ")}available");
-                JsonHandler.JsonSaveLibrary(books, JsonHandler.jsonFilePath);
+                JsonHandler.JsonSaveGeneric(books, JsonHandler.jsonFilePath);
             }
             else if (books.Count == 0)
                 Console.WriteLine("No books in library.");
@@ -46,7 +46,7 @@ namespace Lexicon5Library
                 {
                     books.Remove(removedBook);
                     Console.WriteLine($"Book {removedBook.Title} has been removed.");
-                    JsonHandler.JsonSaveLibrary(books, JsonHandler.jsonFilePath);
+                    JsonHandler.JsonSaveGeneric(books, JsonHandler.jsonFilePath);
                 }
                 else
                     Console.WriteLine("The book was not removed.");
@@ -79,9 +79,9 @@ namespace Lexicon5Library
             {
                 Book.ValidateInput(title, author, isbn, category, books);
                 Book book = new(title, author, isbn, category);
-                Console.WriteLine($"Book {title} created!{Environment.NewLine}");
+                Console.WriteLine($"Book {title} created!");
                 books.Add(book);
-                JsonHandler.JsonSaveLibrary(books, JsonHandler.jsonFilePath);
+                JsonHandler.JsonSaveGeneric(books, JsonHandler.jsonFilePath);
             }
             catch (ArgumentException e)
             {

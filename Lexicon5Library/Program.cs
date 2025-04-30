@@ -8,7 +8,7 @@ internal class Program
     static void Main(string[] args)
     {
         List<Book> books = [];
-        JsonHandler.JsonLoadLibrary(ref books, JsonHandler.jsonFilePath);
+        JsonHandler.JsonLoadGeneric(ref books, JsonHandler.jsonFilePath);
         string input;
 
         while (true)
@@ -49,6 +49,7 @@ internal class Program
                     Console.WriteLine("Your input is not valid");
                     break;
             }
+            Console.WriteLine();
         }
     }
 }
