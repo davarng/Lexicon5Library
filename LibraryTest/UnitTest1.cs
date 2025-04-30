@@ -1,5 +1,5 @@
-﻿using Lexicon5Library;
-using Lexicon5Library.Library;
+﻿using Lexicon5Library.Library;
+using Lexicon5Library.Members;
 
 namespace LibraryTest;
 
@@ -14,7 +14,7 @@ public class UnitTest1
         Console.SetIn(new StringReader("1984\nGeorge Orwell\n1987654321\n7\n"));
 
         //Act
-        User.AddBook(books);
+        Admin.AddBook(books);
 
         //Assert
         Assert.Equal(2, books.Count);
@@ -40,7 +40,7 @@ public class UnitTest1
         Console.SetIn(new StringReader($"{title}\n{author}\n{isbn}\n{category}\n"));
 
         //Act
-        User.AddBook(books);
+        Admin.AddBook(books);
 
         //Assert
         Assert.Single(books);
