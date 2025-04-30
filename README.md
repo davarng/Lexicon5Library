@@ -65,7 +65,7 @@ Read the menu and chose one of the selections and hit enter.
   If the ISBN is invalid
   - User will be told "The book you chose does not exist".
  
-  If the ISBN is invalid
+  If the library is empty
   - User will be told "The library is empty".
 
 ## Tests
