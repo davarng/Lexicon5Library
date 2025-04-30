@@ -28,7 +28,7 @@ public class Admin : User
             {
                 books.Remove(removedBook);
                 Console.WriteLine($"Book {removedBook.Title} has been removed.");
-                JsonHandler.JsonSaveGeneric(books, JsonHandler.jsonFilePath);
+                JsonHandler.JsonSaveGeneric(books, JsonHandler.libraryFilePath);
             }
             else
                 Console.WriteLine("The book was not removed.");
@@ -62,7 +62,7 @@ public class Admin : User
             Book book = new(title, author, isbn, category);
             Console.WriteLine($"Book {title} created!");
             books.Add(book);
-            JsonHandler.JsonSaveGeneric(books, JsonHandler.jsonFilePath);
+            JsonHandler.JsonSaveGeneric(books, JsonHandler.libraryFilePath);
         }
         catch (ArgumentException e)
         {

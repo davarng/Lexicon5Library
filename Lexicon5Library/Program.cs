@@ -10,7 +10,7 @@ internal class Program
     {
         List<Book> books = [];
         List<User> users = [];
-        JsonHandler.JsonLoadGeneric(ref books, JsonHandler.jsonFilePath);
+        JsonHandler.JsonLoadGeneric(ref books, JsonHandler.libraryFilePath);
         JsonHandler.JsonLoadGeneric(ref users, JsonHandler.userFilePath);
 
         string input;
@@ -19,7 +19,7 @@ internal class Program
         while (true)
         {
             string accountInput = InputString($"1. Login{Environment.NewLine}" +
-                $"2. Create account");
+                $"2. Create account{Environment.NewLine}");
 
             switch (accountInput)
             {
@@ -46,8 +46,6 @@ internal class Program
                     $"5. Change book availability{Environment.NewLine}" +
                     $"6. Log out{Environment.NewLine}");
 
-
-
                 input = Console.ReadLine() ?? "";
                 Console.Clear();
 
@@ -68,11 +66,13 @@ internal class Program
                     case "5":
                         User.SetBookStatus(books);
                         break;
+                    case "6":
+                        loggedInUser = null;
+                        break;
                     default:
                         Console.WriteLine("Your input is not valid");
                         break;
                 }
-                Console.WriteLine();
             }
         }
     }

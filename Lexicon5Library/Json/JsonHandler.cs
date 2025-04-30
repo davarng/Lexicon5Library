@@ -4,8 +4,8 @@ namespace Lexicon5Library.Json;
 
 internal static class JsonHandler
 {
-    public const string jsonFilePath = @"Json\LibraryJSON.json";
-    public const string userFilePath = @"Json\UserJSON.json";
+    public static readonly string libraryFilePath = Path.GetFullPath(@"..\..\..", Directory.GetCurrentDirectory()) + @"\Json\LibraryJSON.json";
+    public static readonly string userFilePath = Path.GetFullPath(@"..\..\..", Directory.GetCurrentDirectory()) + @"\Json\UserJSON.json";
 
     private static bool JsonFileExists(string filePath)
     {

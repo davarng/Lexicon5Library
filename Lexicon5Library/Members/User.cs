@@ -8,10 +8,10 @@ namespace Lexicon5Library.Members;
 
 public class User
 {
-    private string Email { get; set; }
-    private string Password { get; set; }
-    private string Name { get; set; }
-    private string LastName { get; set; }
+    public string Email { get; set; }
+    public string Password { get; set; }
+    public string Name { get; set; }
+    public string LastName { get; set; }
 
     public User(string email, string password, string name, string lastName)
     {
@@ -31,7 +31,7 @@ public class User
         try
         {
             //User.ValidateInput(title, author, isbn, category, books);
-            User user = new(email, password, firstName, lastName);
+            User user = new(email, HashAndSaltPassword(password), firstName, lastName);
             Console.WriteLine($"Account created!");
             users.Add(user);
             JsonHandler.JsonSaveGeneric(users, JsonHandler.userFilePath);
@@ -47,9 +47,11 @@ public class User
         string email = InputString("Enter your email: ");
         string password = InputString("Enter your password: ");
 
+        Console.Clear();
+
         var user = users.FirstOrDefault(user => user.Email == email);
 
-        if (user != null)
+        if (user != null || users.Count > 0)
         {
             var saltHash = user.Password.Split(':');
             byte[] salt = Convert.FromBase64String(saltHash[0]);
@@ -87,7 +89,6 @@ public class User
     //List book => book
     internal static void SetBookStatus(List<Book> books)
     {
-        HashAndSaltPassword("s");
         PrintList(books);
         Console.Write("Write ISBN of book: ");
         bool success = long.TryParse(Console.ReadLine(), out long ISBN);
@@ -97,7 +98,7 @@ public class User
         {
             book!.IsAvailable = !book.IsAvailable;
             Console.WriteLine($"Book {book.Title} is now: {(book.IsAvailable ? "" : "not ")}available");
-            JsonHandler.JsonSaveGeneric(books, JsonHandler.jsonFilePath);
+            JsonHandler.JsonSaveGeneric(books, JsonHandler.libraryFilePath);
         }
         else if (books.Count == 0)
             Console.WriteLine("No books in library.");
