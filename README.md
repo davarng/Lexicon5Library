@@ -86,5 +86,7 @@ Read the menu and chose one of the selections and hit enter. Options marked admi
 
 ![image](https://github.com/user-attachments/assets/53dabed3-9bb1-4d5e-a211-b87b48921544)
 
+**Test results**
 
+![image](https://github.com/user-attachments/assets/332d12c6-d268-4ca4-9f11-397129108eb8)
 </div>
