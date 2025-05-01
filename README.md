@@ -78,4 +78,12 @@ Read the menu and chose one of the selections and hit enter. Options marked admi
   - User will be told "The library is empty".
 
 ## Tests
+
+
+
+![image](https://github.com/user-attachments/assets/cf46145f-9a83-4cc1-a5dd-250d63d75eb1)
+
+![image](https://github.com/user-attachments/assets/53dabed3-9bb1-4d5e-a211-b87b48921544)
+
+
 </div>
