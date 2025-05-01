@@ -45,9 +45,9 @@ internal class Program
             //If the user is logged in they enter the main menu.
             while (loggedInUser != null)
             {
-                //Work in progress admin options. Test with admin account.
+                //Work in progress admin options. Can currently be used by all users.
                 //Prints and takes input for menu.
-               input = InputString($"Write one of the options.{Environment.NewLine}" +
+                input = InputString($"Write one of the options.{Environment.NewLine}" +
                     $"1. (ADMIN)Create book{Environment.NewLine}" +
                     $"2. List books{Environment.NewLine}" +
                     $"3. (ADMIN)Remove book{Environment.NewLine}" +
