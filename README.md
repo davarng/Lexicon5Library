@@ -14,10 +14,19 @@
 
 ## Instructions
 ### Clone the file in vscode and start the application
-This will load the books that already exist. If everything goes to plan you will see the text "Library loaded". If an error occurs then check the filePath variable in JsonHandler to make sure the location is correct.
+This will load the books and users that already exist. If everything goes to plan you will see the text "Library loaded"/"User loaded". If an error occurs then check the filePath variable in JsonHandler to make sure the location is correct.
+
+### Login/Signup // Not fully implemented will make validation etc if enough time.
+- **1. Create account(If you already have an account skip to 2.Login)**: Create a new account and login/signup with account that already exists. PREMADE ADMIN ACCOUNT: email = admin@mail.com, password = admin 
+  - Give input for email, first name, last name, password, and if you are an admin give the secret code to create an admin account otherwise just hit enter. ADMIN SECRET CODE = secret
+  - Result output telling you if account creation succeeded or not.
+
+- **2. Login**:
+  - Enter your email and password(Case sensitive).
+  - If the application finds the user you will become logged in and enter the menu selection. Otherwise the program will tell you that no match was found.
 
 ### Menu selection
-Read the menu and chose one of the selections and hit enter.
+Read the menu and chose one of the selections and hit enter. Options marked admin are admin exclusive. I'm working on fixing this right now but inc
 
 - **1. Add New Book**: Create new books and store them in the system.
   - Title: Write a title that is valid(1-300 characters) and hit enter.
@@ -55,7 +64,7 @@ Read the menu and chose one of the selections and hit enter.
   - For Availability write true or false depending if you want to search for books that are or are not available(Example search Availability: "true" will return all the books that are available). If your search doesn't contain true or false it will simply return a list of all books.
   - If there are no results for your search you will get a message saying "No results found..."
 
-- **5. Change Availability**: Toggle the availability of a book (e.g., Available, Checked-out).
+- **5. Change Availability**: Toggle the availability of a book.
   - List prints of all the books.
   - Message asks for an ISBN. Write the exact number of the book you want to change(Example input: "1234567890" will change availability from either true to false or false to true.).
 
@@ -69,4 +78,13 @@ Read the menu and chose one of the selections and hit enter.
   - User will be told "The library is empty".
 
 ## Tests
+**Here i test the AddBook method with 5 different invalid inputs(Comments in code show why they are invalid). It should return a list that contains just 1 element("The one you see in arrange") if two elements are in the list the test has failed**
+
+![image](https://github.com/user-attachments/assets/62317d32-23dc-4e4d-8fe7-4584f72d8a0d)
+
+**Here i test the AddBook method with 5 a valid input. It should return a list that contains 2 elements. If one element is in the list or if the book is null/the fields in the book are not valid the test has failed.**
+
+![image](https://github.com/user-attachments/assets/53dabed3-9bb1-4d5e-a211-b87b48921544)
+
+
 </div>
