@@ -74,7 +74,7 @@ public class Admin : User
         try
         {
             //Validates the input. Error if the input is not valid.
-            Book.ValidateInput(title, author, isbn, category, books);
+            Book.ValidateInputBook(title, author, isbn, category, books);
             //If the input is valid create a new book, add it to the list and save it to the JSON file.
             Book book = new(title, author, isbn, category);
             Console.WriteLine($"Book {title} created!");

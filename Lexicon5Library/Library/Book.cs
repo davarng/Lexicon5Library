@@ -21,7 +21,7 @@ public class Book
     }
 
     //Method to validate the input when creating a new book. Requires the fields of book and a list of books to check for duplicates.
-    internal static void ValidateInput(string title, string author, long isbn, BookCategory category, List<Book> books)
+    internal static void ValidateInputBook(string title, string author, long isbn, BookCategory category, List<Book> books)
     {
         //Empty error message string. Lets me add multiple error messages to the same string.
         string errorMessage = "";

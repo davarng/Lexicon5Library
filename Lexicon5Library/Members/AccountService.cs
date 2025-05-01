@@ -1,4 +1,5 @@
 ﻿using Lexicon5Library.Json;
+using Lexicon5Library.Library;
 using System.Security.Cryptography;
 using static Lexicon5Library.Utility;
 
@@ -18,18 +19,59 @@ static class AccountService
 
         //Validation is not implemented yet.
         try
-        {
+        {   //Checks if the email is unique and if the fields are valid.
+            ValidateInputUser(email, firstName, lastName, password, users);
+
             //Using the UserFactory class to create a new user object and calls the HashAndSaltPassword method to hash the password.
-            Console.WriteLine($"Account created!");
             users.Add(UserFactory.CreateUser((secret == "secret" ? "admin" : "user"), email,
                 HashAndSaltPassword(password), firstName, lastName));
 
+            Console.Clear();
+            //Upload the user.
             JsonHandler.JsonSaveGeneric(users, JsonHandler.userFilePath);
+            Console.WriteLine($"Account created!");
         }
         catch (ArgumentException e)
         {
             e.Message.ErrorMessage();
         }
+    }
+
+    //Validate user input for the sign up method.
+    internal static void ValidateInputUser(string email, string firstName, string lastName, string password, List<User> users)
+    {
+        //Empty error message string. Lets me add multiple error messages to the same string.
+        string errorMessage = "";
+        //Check if the email already exists in the list of users.
+        var duplicateEmail = users.Find(u => u.Email == email);
+
+        //Check if the email is a valid length and if it contains @ and . in the right order.
+        if (email.Length < 6 || email.Length > 200 ||
+            email.IndexOf('@') > email.LastIndexOf('.') ||
+            !email.Contains('@') || !email.Contains('.') ||
+            duplicateEmail != null)
+            //Adds to the error message if the email is not valid.
+            errorMessage += $"The Email is not valid(Unique, 6-200 characters and contains @ and . in the right order). " +
+                $"{(duplicateEmail != null ? "A user with that email already exists." : "Email format invalid.")}{Environment.NewLine}";
+        
+        //Check if the firstname length is valid.
+        if (firstName.Length < 2 || firstName.Length > 100)
+            errorMessage += $"The first name is not valid(2-100 characters). " +
+                $"Your firstname length: {firstName.Length} characters.{Environment.NewLine}";
+
+        //Check if the last name length is valid.
+        if (lastName.Length < 2 || lastName.Length > 100)
+            errorMessage += $"The last name is not valid(2-100 characters)." +
+                $"Your last name length: {lastName.Length} characters{Environment.NewLine}";
+
+        //Check if the password is valid.
+        if (password.Length < 5 || password.Length > 128)
+            errorMessage += $"The password length is not valid(5-128 characters)." +
+                $"Your password length: {password.Length} characters{Environment.NewLine}";
+
+        //Check if the error message is empty. If it is not empty throw an exception with the error message.
+        if (errorMessage.Length > 0)
+            throw new ArgumentException(errorMessage);
     }
 
     //Sign in method that can return null if the user is not found or the password is incorrect.
