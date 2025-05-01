@@ -14,7 +14,7 @@ static class AccountService
         string firstName = InputString("First name: ");
         string lastName = InputString("Last name: ");
         string password = InputString("Password(min 10 chars): ");
-        string secret = InputString("Admin secret code");//Secret code for creating an admin account. If no code is entered, a user account is created.
+        string secret = InputString("Admin secret code: ");//Secret code for creating an admin account. If no code is entered, a user account is created.
 
         //Validation is not implemented yet.
         try

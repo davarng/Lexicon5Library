@@ -1,0 +1,142 @@
+[
+  {
+    "Title": "The Hobbit",
+    "Author": "J.R.R. Tolkien",
+    "Isbn": 9780547928227,
+    "Category": 1,
+    "IsAvailable": true
+  },
+  {
+    "Title": "Dracula",
+    "Author": "Bram Stoker",
+    "Isbn": 9780141439846,
+    "Category": 0,
+    "IsAvailable": true
+  },
+  {
+    "Title": "Dune",
+    "Author": "Frank Herbert",
+    "Isbn": 9780441172719,
+    "Category": 2,
+    "IsAvailable": false
+  },
+  {
+    "Title": "Steve Jobs",
+    "Author": "Walter Isaacson",
+    "Isbn": 9781451648539,
+    "Category": 3,
+    "IsAvailable": true
+  },
+  {
+    "Title": "Guns, Germs, and Steel",
+    "Author": "Jared Diamond",
+    "Isbn": 9780393317558,
+    "Category": 4,
+    "IsAvailable": true
+  },
+  {
+    "Title": "Pride and Prejudice",
+    "Author": "Jane Austen",
+    "Isbn": 9780141040349,
+    "Category": 5,
+    "IsAvailable": false
+  },
+  {
+    "Title": "The Girl with the Dragon Tattoo",
+    "Author": "Stieg Larsson",
+    "Isbn": 9780307454546,
+    "Category": 6,
+    "IsAvailable": true
+  },
+  {
+    "Title": "Atomic Habits",
+    "Author": "James Clear",
+    "Isbn": 9780735211292,
+    "Category": 7,
+    "IsAvailable": true
+  },
+  {
+    "Title": "Charlotte's Web",
+    "Author": "E.B. White",
+    "Isbn": 9780061124952,
+    "Category": 8,
+    "IsAvailable": true
+  },
+  {
+    "Title": "The Fault in Our Stars",
+    "Author": "John Green",
+    "Isbn": 9780525478812,
+    "Category": 9,
+    "IsAvailable": true
+  },
+  {
+    "Title": "It",
+    "Author": "Stephen King",
+    "Isbn": 9781501142970,
+    "Category": 10,
+    "IsAvailable": false
+  },
+  {
+    "Title": "Milk and Honey",
+    "Author": "Rupi Kaur",
+    "Isbn": 9781449474256,
+    "Category": 11,
+    "IsAvailable": true
+  },
+  {
+    "Title": "And Then There Were None",
+    "Author": "Agatha Christie",
+    "Isbn": 9780062073488,
+    "Category": 0,
+    "IsAvailable": true
+  },
+  {
+    "Title": "Harry Potter and the Sorcerer's Stone",
+    "Author": "J.K. Rowling",
+    "Isbn": 9780590353427,
+    "Category": 1,
+    "IsAvailable": true
+  },
+  {
+    "Title": "Ender's Game",
+    "Author": "Orson Scott Card",
+    "Isbn": 9780812550702,
+    "Category": 2,
+    "IsAvailable": false
+  },
+  {
+    "Title": "Becoming",
+    "Author": "Michelle Obama",
+    "Isbn": 9781524763138,
+    "Category": 3,
+    "IsAvailable": true
+  },
+  {
+    "Title": "A People's History of the United States",
+    "Author": "Howard Zinn",
+    "Isbn": 9780062397347,
+    "Category": 4,
+    "IsAvailable": true
+  },
+  {
+    "Title": "The Notebook",
+    "Author": "Nicholas Sparks",
+    "Isbn": 9780446605236,
+    "Category": 5,
+    "IsAvailable": false
+  },
+  {
+    "Title": "The Silent Patient",
+    "Author": "Alex Michaelides",
+    "Isbn": 9781250301697,
+    "Category": 6,
+    "IsAvailable": true
+  },
+  {
+    "Title": "The 7 Habits of Highly Effective People",
+    "Author": "Stephen R. Covey",
+    "Isbn": 9780743269513,
+    "Category": 7,
+    "IsAvailable": true
+  }
+]
