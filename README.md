@@ -82,9 +82,12 @@ Read the menu and chose one of the selections and hit enter. Options marked admi
 
 ![image](https://github.com/user-attachments/assets/62317d32-23dc-4e4d-8fe7-4584f72d8a0d)
 
-**Here i test the AddBook method with 5 a valid input. It should return a list that contains 2 elements. If one element is in the list or if the book is null/the fields in the book are not valid the test has failed.**
+**Here i test the AddBook method with a valid input. It should return a list that contains 2 elements. If one element is in the list or if the book is null/the fields in the book are not valid the test has failed.**
 
 ![image](https://github.com/user-attachments/assets/53dabed3-9bb1-4d5e-a211-b87b48921544)
 
+**Test results**
+
+![image](https://github.com/user-attachments/assets/86cb27da-7963-43e0-a7f8-abe175ee8f57)
 
 </div>
