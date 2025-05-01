@@ -17,13 +17,13 @@
 This will load the books and users that already exist. If everything goes to plan you will see the text "Library loaded"/"User loaded". If an error occurs then check the filePath variable in JsonHandler to make sure the location is correct.
 
 ### Login/Signup // Not fully implemented will make validation etc if enough time.
-- **1. Create account(If you already have an account skip this part)**: Create a new account and login/signup with account that already exists. PREMADE ADMIN ACCOUNT: email = admin@mail.com, password = admin 
+- **1. Create account(If you already have an account skip to 2.Login)**: Create a new account and login/signup with account that already exists. PREMADE ADMIN ACCOUNT: email = admin@mail.com, password = admin 
   - Give input for email, first name, last name, password, and if you are an admin give the secret code to create an admin account otherwise just hit enter. ADMIN SECRET CODE = secret
-  - Result output telling you if account creation succeeded.
+  - Result output telling you if account creation succeeded or not.
 
 - **2. Login**:
   - Enter your email and password(Case sensitive).
-  - If the application finds the user you will become logged in and enter the menu selection. otherwise the program will tell you that no match was found.
+  - If the application finds the user you will become logged in and enter the menu selection. Otherwise the program will tell you that no match was found.
 
 ### Menu selection
 Read the menu and chose one of the selections and hit enter. Options marked admin are admin exclusive. I'm working on fixing this right now but inc
