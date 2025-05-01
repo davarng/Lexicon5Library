@@ -78,10 +78,8 @@ Read the menu and chose one of the selections and hit enter. Options marked admi
   - User will be told "The library is empty".
 
 ## Tests
-
-
-
-![image](https://github.com/user-attachments/assets/cf46145f-9a83-4cc1-a5dd-250d63d75eb1)
+**Here i test the AddBook method with 5 different invalid inputs(Comments in code show why they are invalid). It should return a list that contains just 1 element("The one you see in arrange") if two elements are in the list the test has failed**
+![image](https://github.com/user-attachments/assets/62317d32-23dc-4e4d-8fe7-4584f72d8a0d)
 
 ![image](https://github.com/user-attachments/assets/53dabed3-9bb1-4d5e-a211-b87b48921544)
 
