@@ -5,12 +5,15 @@ namespace LibraryTest;
 
 public class UnitTest1
 {
+
+    //Test for adding a book. Gives valid input and expects the list to contain 2 elements.
     [Fact]
     public void CreateNewBook_WithValidInput_ShouldCreateBook()
     {
         //Arrange
         List<Book> books = new() { new("Name", "test", 123123123123, (BookCategory)1) };
 
+        //Set the console input to simulate user input.
         Console.SetIn(new StringReader("1984\nGeorge Orwell\n1987654321\n7\n"));
 
         //Act
@@ -26,6 +29,7 @@ public class UnitTest1
         Assert.True(books[1].IsAvailable);
     }
 
+    //Test for adding a book with invalid input. Gives invalid input and expects the list to contain 1 element.
     [Theory]
     [InlineData("", "Author", "1234567890", "1")]           //Invalid title < 1 characters.
     [InlineData("Title", "", "1234567890", "1")]            //Invalid author < 2 characters.
@@ -37,6 +41,7 @@ public class UnitTest1
         //Arrange
         List<Book> books = [new("Name", "test", 123123123123, (BookCategory)1)];
 
+        //Mock user input.
         Console.SetIn(new StringReader($"{title}\n{author}\n{isbn}\n{category}\n"));
 
         //Act

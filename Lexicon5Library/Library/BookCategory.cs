@@ -1,5 +1,6 @@
 ﻿namespace Lexicon5Library.Library
 {
+    //Enum with some types.
     public enum BookCategory
     {
         Mystery,

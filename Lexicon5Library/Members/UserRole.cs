@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lexicon5Library.Members;
 
+//User roles.
 public enum UserRole
 {
     User,

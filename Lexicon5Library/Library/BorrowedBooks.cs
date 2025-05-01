@@ -1,9 +1,10 @@
 ﻿namespace Lexicon5Library.Library;
 
+//Not implemented yet.
 class BorrowedBooks
 {
-    private Book book; //make sure it exists and isnt null
-    private string user; //TODO
+    private Book book;
+    private string user; 
     private DateOnly borrowDate;
     private DateOnly expiryDate;
 
