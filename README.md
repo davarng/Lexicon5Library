@@ -26,7 +26,7 @@ This will load the books and users that already exist. If everything goes to pla
   - If the application finds the user you will become logged in and enter the menu selection. Otherwise the program will tell you that no match was found.
 
 ### Menu selection
-Read the menu and chose one of the selections and hit enter. Options marked admin are admin exclusive. I'm working on fixing this right now but inc
+Read the menu and chose one of the selections and hit enter. Options marked admin are planned to be admin exclusive but not yet implemented.
 
 - **1. Add New Book**: Create new books and store them in the system.
   - Title: Write a title that is valid(1-300 characters) and hit enter.
