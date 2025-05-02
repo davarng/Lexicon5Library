@@ -9,6 +9,7 @@ public class Book
     public BookCategory Category { get; set; }
     //Boolean to check if the book is available or not.
     public bool IsAvailable { get; set; }
+    //public BorrowedBooks? IsBorrowed { get; set; } Not enough time to implement this.
 
     //Set isAvailable to true by default.
     public Book(string title, string author, long isbn, BookCategory category)

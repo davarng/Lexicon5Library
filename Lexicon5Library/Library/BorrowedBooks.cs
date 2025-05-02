@@ -1,19 +1,19 @@
-﻿namespace Lexicon5Library.Library;
+﻿using Lexicon5Library.Members;
+
+namespace Lexicon5Library.Library;
 
 //Not implemented yet.
-class BorrowedBooks
+public class BorrowedBooks
 {
-    private Book book;
-    private string user; 
-    private DateOnly borrowDate;
-    private DateOnly expiryDate;
+    public User User { get; private set; }
+    public DateOnly BorrowDate { get; private set; }
+    public DateOnly ExpiryDate { get; private set; }
 
-
-    public BorrowedBooks(Book book, string user)
+    public BorrowedBooks(User user)
     {
-        this.book = book;
-        this.user = user;
-        borrowDate = DateOnly.FromDateTime(DateTime.Now);
-        expiryDate = borrowDate.AddDays(7);
+        User = user;
+        BorrowDate = DateOnly.FromDateTime(DateTime.Now);
+        ExpiryDate = BorrowDate.AddDays(7);
     }
+
 }
