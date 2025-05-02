@@ -7,7 +7,37 @@ namespace Lexicon5Library.Members;
 
 // This class handles user account operations like signing up and signing in.
 static class AccountService
-{
+{   
+    public static void UserLoginScreen(List<User> users, ref User? loggedInUser)
+    {
+        //User has to log in before using the application.
+        string accountInput = InputString($"1. Login{Environment.NewLine}" +
+            $"2. Create account{Environment.NewLine}" +
+            $"Q. Quit application{Environment.NewLine}");
+
+        switch (accountInput)
+        {
+            case "1":
+                //User chose 1 so we call the SignIn method from AccountService class.
+                loggedInUser = AccountService.SignIn(users);
+                break;
+            case "2":
+                //User chose 2 so we call the SignUp method from AccountService class.
+                AccountService.SignUp(users);
+                break;
+            case "Q":
+            case "q":
+                //Quits the application.
+                Console.WriteLine($"{Environment.NewLine}Closing application window...");
+                Environment.Exit(0);
+                break;
+            default:
+                //If the user input is not valid we print a message.
+                Console.WriteLine("Your input is not valid");
+                break;
+        }
+    }
+
     //Sign up method that adds a new user to the list of users and saves it to the JSON file.
     internal static void SignUp(List<User> users)
     {

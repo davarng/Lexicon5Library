@@ -20,28 +20,10 @@ internal class Program
         User? loggedInUser = null;
 
         while (true)
-        {
-            //User has to log in before using the application.
-            string accountInput = InputString($"1. Login{Environment.NewLine}" +
-                $"2. Create account{Environment.NewLine}"+
-                $"Q. Quit application{Environment.NewLine}");
-
-            switch (accountInput)
-            {
-                case "1":
-                    //User chose 1 so we call the SignIn method from AccountService class.
-                    loggedInUser = AccountService.SignIn(users);
-                    break;
-                case "2":
-                    //User chose 2 so we call the SignUp method from AccountService class.
-                    AccountService.SignUp(users);
-                    break;
-                case "Q":
-                case "q":
-                    //Quits the application.
-                    Console.WriteLine($"{Environment.NewLine}Closing application window...");
-                    return;
-            }
+        {   
+            //Runs the login screen method from the AccountService class.
+            AccountService.UserLoginScreen(users, ref loggedInUser);
+            
             //If the user is logged in they enter the main menu.
             while (loggedInUser != null)
             {
