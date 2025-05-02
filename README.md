@@ -16,9 +16,10 @@
 ### Clone the file in vscode and start the application
 This will load the books and users that already exist. If everything goes to plan you will see the text "Library loaded"/"User loaded". If an error occurs then check the filePath variable in JsonHandler to make sure the location is correct.
 
-### Login/Signup // Not fully implemented will make validation etc if enough time.
-- **1. Create account(If you already have an account skip to 2.Login)**: Create a new account and login/signup with account that already exists. PREMADE ADMIN ACCOUNT: email = admin@mail.com, password = admin 
+### Login/Signup 
+- **1. Create account(If you already have an account skip to 2.Login)** PREMADE ADMIN ACCOUNT: email = admin@mail.com, password = admin
   - Give input for email, first name, last name, password, and if you are an admin give the secret code to create an admin account otherwise just hit enter. ADMIN SECRET CODE = secret
+  - If the input is faulty you will get a warning detailing why it is faulty. Name/lastname 2-100 char. Email 6-200 char, is unique and contains '@' and '.'. Password 5-128 chars.
   - Result output telling you if account creation succeeded or not.
 
 - **2. Login**:
